@@ -15,26 +15,6 @@
             </h3>
 
             <h4 class="mr_b_15px"> <i><b>Notification Settings for User </b></i></h4>
-            <div class="col-sm-12">
-                <div class="form-group row">
-                    <label class="col-sm-12 col-md-2 control-label ">Send SMS on Login :</label>
-                    <div class="col-sm-12 col-md-2">
-                        <div class="input-group">
-                            <div id="radioBtn" class="btn-group">
-                                <a class="btn btn-primary btn-sm active" data-toggle="send_sms_login" data-title="Yes">YES</a>
-                                <a class="btn btn-primary btn-sm notActive" data-toggle="send_sms_login" data-title="No">NO</a>
-                            </div>
-                            <input type="hidden" name="send_sms_login" id="send_sms_login" value="Yes">
-                        </div>
-                    </div>
-
-                    <label class="col-sm-12 col-md-2 control-label" for="login_msg">Login Massage :</label>
-                    <div class="col-sm-12 col-md-5">
-
-                        <textarea name="login_msg" class="form-control" rows="3" id="login_msg" placeholder="Login Massage" required></textarea>
-                    </div>
-                </div>
-            </div>
 
             <div class="col-sm-12">
                 <div class="form-group row">

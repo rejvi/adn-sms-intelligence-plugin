@@ -11,8 +11,9 @@
 
                 General Settings
             </h3>
+<?php
 
-
+?>
             <div class="col-sm-6">
                         <div class="form-group row">
                             <label for="api_key" class="col-sm-4 col-md-4 control-label ">API Key :</label>

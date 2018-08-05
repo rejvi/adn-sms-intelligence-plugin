@@ -158,6 +158,25 @@ class Adn_Sms_Intelligence_Plugin {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
         //add menu
         $this->loader->add_action( 'admin_menu', $plugin_admin, 'ADNsms_add_menu' );
+
+        require_once  (ABSPATH.'wp-includes/pluggable.php');
+
+        $user = wp_get_current_user();
+
+        if(isset($user->roles[0]) && ($user->roles[0]=='administrator' || $user->roles[0]=='shop_manager')){
+
+        $this->loader->add_action( 'woocommerce_order_status_completed', $plugin_admin, 'adn_sms_send_order_completed' );
+        $this->loader->add_action( 'woocommerce_order_status_pending', $plugin_admin, 'adn_order_status_pending' );
+        $this->loader->add_action( 'woocommerce_order_status_processing', $plugin_admin, 'adn_order_status_processing' );
+        $this->loader->add_action( 'woocommerce_order_status_cancelled', $plugin_admin, 'adn_order_status_cancelled' );
+        $this->loader->add_action( 'woocommerce_order_status_failed', $plugin_admin, 'adn_order_status_failed' );
+        $this->loader->add_action( 'woocommerce_order_status_refunded', $plugin_admin, 'adn_order_status_refunded' );
+        $this->loader->add_action( 'woocommerce_order_status_on-hold', $plugin_admin, 'adn_order_status_on_hold' );
+        }
+
+
+
+
 	}
 
 	/**
@@ -173,7 +192,14 @@ class Adn_Sms_Intelligence_Plugin {
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+		$this->loader->add_action( 'user_register', $plugin_public, 'adn_user_register' );
+        require_once  (ABSPATH.'wp-includes/pluggable.php');
 
+        $user = wp_get_current_user();
+
+        if(isset($user->roles[0]) && $user->roles[0]=='customer') {
+            $this->loader->add_action('woocommerce_new_order', $plugin_public, 'adn_new_order');
+        }
 
 	}
 
