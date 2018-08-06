@@ -103,13 +103,13 @@ class Adn_Sms_Intelligence_Plugin_Public {
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/adn-sms-intelligence-plugin-public.js', array( 'jquery' ), $this->version, false );
 
 	}
-
-	public function adn_user_register($user_id){
-        $user = get_userdata($user_id);
-//        $userMeta=get_user_meta( $user_id);
-	  exit('OK');
-
-    }
+//
+//	public function adn_user_register($user_id){
+//        $user = get_userdata($user_id);
+////        $userMeta=get_user_meta( $user_id);
+//	  exit('OK');
+//
+//    }
 	public function adn_new_order($order_id){
 
         $order = wc_get_order( $order_id );
@@ -140,7 +140,7 @@ class Adn_Sms_Intelligence_Plugin_Public {
         $requestType = 'SINGLE_SMS';    // options available: "SINGLE_SMS", "OTP"
         $messageType = 'TEXT';         // options available: "TEXT", "UNICODE"
 //
-        $sms = new AdnSmsNotification();
-        $sms->sendSms($requestType, $message, $recipient, $messageType);
+//        $sms = new AdnSmsNotification();
+//        $sms->sendSms($requestType, $message, $recipient, $messageType);
     }
 }
