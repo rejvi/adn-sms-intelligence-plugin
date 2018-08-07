@@ -111,7 +111,10 @@ class Adn_Sms_Intelligence_Plugin_Public {
 //
 //    }
 	public function adn_new_order($order_id){
-
+        /**
+         *  Send SMS  in new order.
+         *
+         */
         $order = wc_get_order( $order_id );
 
         $order_data = $order->get_data(); // The Order data
@@ -120,14 +123,6 @@ class Adn_Sms_Intelligence_Plugin_Public {
 
         $order_billing_first_name = $order_data['billing']['first_name'];
         $order_billing_last_name = $order_data['billing']['last_name'];
-        $order_billing_company = $order_data['billing']['company'];
-        $order_billing_address_1 = $order_data['billing']['address_1'];
-        $order_billing_address_2 = $order_data['billing']['address_2'];
-        $order_billing_city = $order_data['billing']['city'];
-        $order_billing_state = $order_data['billing']['state'];
-        $order_billing_postcode = $order_data['billing']['postcode'];
-        $order_billing_country = $order_data['billing']['country'];
-        $order_billing_email = $order_data['billing']['email'];
         $order_billing_phone = $order_data['billing']['phone'];
 
         $data['order_id']=$order_id;
@@ -140,7 +135,50 @@ class Adn_Sms_Intelligence_Plugin_Public {
         $requestType = 'SINGLE_SMS';    // options available: "SINGLE_SMS", "OTP"
         $messageType = 'TEXT';         // options available: "TEXT", "UNICODE"
 //
-//        $sms = new AdnSmsNotification();
-//        $sms->sendSms($requestType, $message, $recipient, $messageType);
+        $sms = new AdnSmsNotification();
+        $sms->sendSms($requestType, $message, $recipient, $messageType);
     }
+
+    public function adn_password_reset( $user, $new_pass ) {
+
+        wp_set_password( $new_pass, $user->ID );
+        update_user_option( $user->ID, 'default_password_nag', false, true );
+
+        /**
+         * Fires after the user's password is reset.
+         *
+         * @since 4.4.0
+         *
+         * @param WP_User $user     The user.
+         * @param string  $new_pass New user password.
+         * send_sms_after_password_reset Custom adn hook.
+         */
+        do_action( 'send_sms_after_password_reset', $user);
+
+        wp_password_change_notification( $user );
+    }
+    public function adn_send_sms_after_password_reset($user){
+        /**
+         *  Send SMS after password rest.
+         *
+         */
+        $data['first_name'] = get_user_meta( $user->ID,'first_name',true);
+        $data['last_name']= get_user_meta( $user->ID,'last_name',true);
+        $data['phone_number']= get_user_meta( $user->ID,'billing_phone',true);
+
+        $data['costumer_name']= $data['first_name']  .' '.$data['last_name'];
+        $data['massage_body']='Hi '. $data['costumer_name'].', your password is successfully reset.';
+        if( $data['phone_number']!=null){
+
+            $message = $data['massage_body'];
+            $recipient= $data['phone_number'];       // For SINGLE_SMS or OTP
+            $requestType = 'SINGLE_SMS';    // options available: "SINGLE_SMS", "OTP"
+            $messageType = 'TEXT';         // options available: "TEXT", "UNICODE"
+
+            $sms = new AdnSmsNotification();
+            $sms->sendSms($requestType, $message, $recipient, $messageType);
+        }
+
+    }
+
 }

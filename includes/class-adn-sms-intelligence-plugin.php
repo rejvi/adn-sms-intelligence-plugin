@@ -200,7 +200,8 @@ class Adn_Sms_Intelligence_Plugin {
         if(isset($user->roles[0]) && $user->roles[0]=='customer') {
             $this->loader->add_action('woocommerce_new_order', $plugin_public, 'adn_new_order');
         }
-
+		 $this->loader->add_action( 'password_reset', $plugin_public, 'adn_password_reset' ,10,2);
+		 $this->loader->add_action( 'send_sms_after_password_reset', $plugin_public, 'adn_send_sms_after_password_reset' );
 	}
 
 	/**

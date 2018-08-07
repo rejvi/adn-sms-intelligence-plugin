@@ -82,5 +82,3 @@ function run_adn_sms_intelligence_plugin() {
 }
 run_adn_sms_intelligence_plugin();
 
-
-
