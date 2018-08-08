@@ -165,7 +165,7 @@ class Adn_Sms_Intelligence_Plugin {
 
         if(isset($user->roles[0]) && ($user->roles[0]=='administrator' || $user->roles[0]=='shop_manager')){
 
-        $this->loader->add_action( 'woocommerce_order_status_completed', $plugin_admin, 'adn_sms_send_order_completed' );
+        $this->loader->add_action( 'woocommerce_order_status_completed', $plugin_admin, 'adn_order_status_completed' );
         $this->loader->add_action( 'woocommerce_order_status_pending', $plugin_admin, 'adn_order_status_pending' );
         $this->loader->add_action( 'woocommerce_order_status_processing', $plugin_admin, 'adn_order_status_processing' );
         $this->loader->add_action( 'woocommerce_order_status_cancelled', $plugin_admin, 'adn_order_status_cancelled' );
@@ -192,16 +192,9 @@ class Adn_Sms_Intelligence_Plugin {
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
-//		$this->loader->add_action( 'user_register', $plugin_public, 'adn_user_register' );
-        require_once  (ABSPATH.'wp-includes/pluggable.php');
-
-        $user = wp_get_current_user();
-
-        if(isset($user->roles[0]) && $user->roles[0]=='customer') {
-            $this->loader->add_action('woocommerce_new_order', $plugin_public, 'adn_new_order');
-        }
-		 $this->loader->add_action( 'password_reset', $plugin_public, 'adn_password_reset' ,10,2);
-		 $this->loader->add_action( 'send_sms_after_password_reset', $plugin_public, 'adn_send_sms_after_password_reset' );
+        $this->loader->add_action('woocommerce_new_order', $plugin_public, 'adn_new_order');
+		$this->loader->add_action( 'password_reset', $plugin_public, 'adn_password_reset' ,10,2);
+		$this->loader->add_action( 'send_sms_after_password_reset', $plugin_public, 'adn_send_sms_after_password_reset' );
 	}
 
 	/**

@@ -116,8 +116,8 @@ class Adn_Sms_Intelligence_Plugin_Public {
          *
          */
         $order = wc_get_order( $order_id );
-
         $order_data = $order->get_data(); // The Order data
+
 
         ## BILLING INFORMATION:
 
@@ -135,6 +135,24 @@ class Adn_Sms_Intelligence_Plugin_Public {
         $requestType = 'SINGLE_SMS';    // options available: "SINGLE_SMS", "OTP"
         $messageType = 'TEXT';         // options available: "TEXT", "UNICODE"
 //
+
+        /**
+         * send sms new registration
+         */
+        $customer_orders = get_posts( array(
+            'numberposts' => -1,
+            'meta_key'    => '_customer_user',
+            'meta_value'  => get_current_user_id(),
+            'post_type'   => wc_get_order_types(),
+            'post_status' => array_keys( wc_get_order_statuses() ),  //'post_status' => array('wc-completed', 'wc-processing'),
+        ) );
+
+        if(count($customer_orders)==1){
+            $new_reg_message = 'Hi '. $data['costumer_name'].', Your registration is successful.';
+            $new_reg_sms = new AdnSmsNotification();
+            $new_reg_sms->sendSms($requestType, $new_reg_message, $recipient, $messageType);
+        }
+
         $sms = new AdnSmsNotification();
         $sms->sendSms($requestType, $message, $recipient, $messageType);
     }

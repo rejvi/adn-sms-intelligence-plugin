@@ -147,7 +147,7 @@ class Adn_Sms_Intelligence_Plugin_Admin {
     {
         include_once PLUGIN_DIR_PATH."/admin/partials/setting_page.php";
     }
-    public function adn_sms_send_order_completed( $order_id ) {
+    public function adn_order_status_completed( $order_id ) {
 
         $order = wc_get_order( $order_id );
 
@@ -224,8 +224,6 @@ class Adn_Sms_Intelligence_Plugin_Admin {
 //above is just a simple example how it works
 //your code to send data
     }
-
-
     public function adn_order_status_processing( $order_id) {
 
 
@@ -260,7 +258,6 @@ class Adn_Sms_Intelligence_Plugin_Admin {
         $sms->sendSms($requestType, $message, $recipient, $messageType);
 
         }
-
     public function adn_order_status_pending( $order_id) {
 
         $order = wc_get_order( $order_id );
@@ -296,7 +293,6 @@ class Adn_Sms_Intelligence_Plugin_Admin {
 
 
     }
-
     public function adn_order_status_cancelled( $order_id) {
 
         $order = wc_get_order( $order_id );

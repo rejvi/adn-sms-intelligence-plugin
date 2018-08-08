@@ -5,7 +5,7 @@
 
 
 <div class="container-fluid">
-    <form method="post" action="options.php">
+    <form method="post" action="">
         <div class="row">
 
             <h3>
@@ -13,9 +13,12 @@
 
                SMS Notification Settings
             </h3>
-
-            <h4 class="mr_b_15px"> <i><b>Notification Settings for User </b></i></h4>
-
+            <div class="col-sm-12">
+            <h4 class="p-tb-20px"> <i><b>Notification Settings for User </b></i></h4>
+            <?php
+            $config= include(__DIR__ . '/../../config/sms_config.php');
+            ?>
+            </div>
             <div class="col-sm-12">
                 <div class="form-group row">
                     <label class="col-sm-12 col-md-2 control-label ">Send SMS on Registration :</label>
@@ -76,10 +79,10 @@
                 </div>
             </div>
 
+            <div class="col-sm-12 ">
+            <h4  class="p-tb-20px"> <i><b>Notification Settings for Woocommerce Order</b></i></h4>
 
-            <h4  class="mr_b_15px"> <i><b>Notification Settings for Woocommerce Order</b></i></h4>
-
-
+            </div>
         <div class="col-sm-12">
                 <div class="form-group row">
                     <label class="col-sm-12 col-md-2 control-label ">Send SMS on Pending:</label>
@@ -123,20 +126,20 @@
             <div class="col-sm-12">
 
                 <div class="form-group row">
-                    <label class="col-sm-12 col-md-2 control-label ">Send SMS on Shipped:</label>
+                    <label class="col-sm-12 col-md-2 control-label ">Send SMS on Failed:</label>
                     <div class="col-sm-12 col-md-2">
                         <div class="input-group">
                             <div id="radioBtn" class="btn-group">
-                                <a class="btn btn-primary btn-sm active" data-toggle="send_sms_shipped" data-title="Yes">YES</a>
-                                <a class="btn btn-primary btn-sm notActive" data-toggle="send_sms_shipped" data-title="No">NO</a>
+                                <a class="btn btn-primary btn-sm active" data-toggle="send_sms_failed" data-title="Yes">YES</a>
+                                <a class="btn btn-primary btn-sm notActive" data-toggle="send_sms_failed" data-title="No">NO</a>
                             </div>
-                            <input type="hidden" name="send_sms_shipped" id="send_sms_shipped" value="Yes">
+                            <input type="hidden" name="send_sms_failed" id="send_sms_failed" value="Yes">
                         </div>
                     </div>
-                    <label class="col-sm-12 col-md-2 control-label" for="shipped_msg">Shipped Massage :</label>
+                    <label class="col-sm-12 col-md-2 control-label" for="failed_msg">Failed Massage :</label>
                     <div class="col-sm-12 col-md-5">
 
-                        <textarea name="shipped_msg" class="form-control" rows="3" id="shipped_msg" placeholder="Shipped Massage " required></textarea>
+                        <textarea name="failed_msg" class="form-control" rows="3" id="failed_msg" placeholder="Failed Massage " required></textarea>
                     </div>
                 </div>
             </div>

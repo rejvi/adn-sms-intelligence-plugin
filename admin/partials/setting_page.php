@@ -12,20 +12,21 @@
                 General Settings
             </h3>
 <?php
+  $config= include(__DIR__ . '/../../library/adn_sms_class/config/config.php');
 
 ?>
             <div class="col-sm-6">
                         <div class="form-group row">
                             <label for="api_key" class="col-sm-4 col-md-4 control-label ">API Key :</label>
                             <div class="col-sm-8 col-md-8">
-                            <input type="text" class="form-control" name="api_key" id="api_key" placeholder="API Key" required>
+                            <input type="text" class="form-control" name="api_key" id="api_key" placeholder="API Key" value="<?php echo API_KEY ;?>" required>
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="api_secret" class="col-sm-4 col-md-4 control-label ">API Secret :</label>
                             <div class="col-sm-8 col-md-8 ">
-                            <input type="password" class="form-control"  name="password"  id="api_secret" placeholder="API Secret" required>
+                            <input type="text" class="form-control"  name="password"  id="api_secret" placeholder="API Secret" value="<?php echo API_SECRET ;?>" required>
                             </div>
                         </div>
 
