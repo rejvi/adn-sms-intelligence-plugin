@@ -82,3 +82,10 @@ function run_adn_sms_intelligence_plugin() {
 }
 run_adn_sms_intelligence_plugin();
 
+add_action("wp_ajax_adnajax","adnAjaxNotify");
+function adnAjaxNotify(){
+    check_ajax_referer('adn_notification_nonce');
+
+    print_r($_REQUEST);
+    wp_die();
+}

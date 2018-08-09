@@ -5,7 +5,7 @@
 
 
 <div class="container-fluid">
-    <form method="post" action="">
+    <form method="post" action="javascript:void(0)" id="formNotify">
         <div class="row">
 
             <h3>
@@ -179,7 +179,7 @@
                     <label class="col-sm-12 col-md-2 control-label" for="cancelled_msg">Cancelled Massage :</label>
                     <div class="col-sm-12 col-md-5">
 
-                        <textarea name="`" class="form-control" rows="3" id="cancelled_msg" placeholder="Cancelled Massage " required></textarea>
+                        <textarea name="cancelled_msg" class="form-control" rows="3" id="cancelled_msg" placeholder="Cancelled Massage " required></textarea>
                     </div>
                 </div>
 
@@ -192,6 +192,7 @@
 
             <div class="col-sm-12 col-md-12 ">
                 <?php
+//                wp_nonce_field('notification_action_nonce','notification_name_nonce');
                 submit_button();
                 ?>
             </div>
@@ -205,5 +206,17 @@
     </i>
 </footer>
 <script>
+    jQuery(function () {
+        jQuery('#formNotify').validate({
+            submitHandler:function () {
+                var adnnonce = "<?php echo wp_create_nonce('adn_notification_nonce') ;?>";
+                var postdata= jQuery("#formNotify").serialize() +"&action=adnajax&_ajax_nonce="+adnnonce;
 
+                jQuery.post("<?php echo admin_url('admin-ajax.php') ?>",postdata,function (response) {
+
+                    console.log(response);
+                })
+            }
+        });
+    });
 </script>
