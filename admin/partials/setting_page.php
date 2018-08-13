@@ -1,16 +1,13 @@
-<link rel="stylesheet" href="<?php echo PLUGIN_URL.'/admin/css/bootstrap.min.css'?>">
-<script src="<?php echo PLUGIN_URL.'/admin/js/jquery.min.js' ?>"></script>
-<script src="<?php echo PLUGIN_URL.'/admin/js/bootstrap.min.js' ?>"></script>
 
     <div class="container-fluid">
       <form method="post" action="javascript:void(0)" id="formId">
         <div class="row">
 
-            <h3>
+            <h4>
                 <img src="<?php echo  PLUGIN_URL."/admin/image/adnsms.png" ?>">
 
                 General Settings
-            </h3>
+            </h4>
 <?php
   $config= include(__DIR__ . '/../../library/adn_sms_class/config/config.php');
 
@@ -40,16 +37,24 @@
         </form>
     </div>
 
-    <footer class="container-fluid">
-        <i class="stars">  If you like ADNsms Intelligence Plugin please leave us a <a href="#">★★★★★</a> rating. A huge thanks in advance!</i>
-    </footer>
+    <?php  include(__DIR__ . '/_footer.php'); ?>
     <script>
-        $('#radioBtn a').on('click', function(){
-            var sel = $(this).data('title');
-            var tog = $(this).data('toggle');
-            $('#'+tog).prop('value', sel);
+        jQuery(function () {
+            jQuery('#formId').validate({
+                submitHandler:function () {
+                    var adnnonce = "<?php echo wp_create_nonce('adn_settings_nonce') ;?>";
+                    var postdata= jQuery("#formId").serialize() +"&action=adn_settings&_ajax_nonce="+adnnonce;
 
-            $('a[data-toggle="'+tog+'"]').not('[data-title="'+sel+'"]').removeClass('active').addClass('notActive');
-            $('a[data-toggle="'+tog+'"][data-title="'+sel+'"]').removeClass('notActive').addClass('active');
-        })
+                    jQuery.post("<?php echo admin_url('admin-ajax.php') ?>",postdata,function (response) {
+
+                        // console.log(response);
+                        var status= jQuery.parseJSON(response);
+                        if(status.status==1){
+                            alert(status.massage);
+                        }
+                        location.reload();
+                    })
+                }
+            });
+        });
     </script>

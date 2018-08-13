@@ -172,6 +172,8 @@ class Adn_Sms_Intelligence_Plugin {
         $this->loader->add_action( 'woocommerce_order_status_failed', $plugin_admin, 'adn_order_status_failed' );
         $this->loader->add_action( 'woocommerce_order_status_refunded', $plugin_admin, 'adn_order_status_refunded' );
         $this->loader->add_action( 'woocommerce_order_status_on-hold', $plugin_admin, 'adn_order_status_on_hold' );
+        $this->loader->add_action( 'wp_ajax_adnajax', $plugin_admin, 'adnAjaxNotify' );
+        $this->loader->add_action( 'wp_ajax_adn_settings', $plugin_admin, 'adnAjaxSettings' );
         }
 
 

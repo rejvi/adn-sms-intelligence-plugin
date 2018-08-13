@@ -431,4 +431,77 @@ class Adn_Sms_Intelligence_Plugin_Admin {
         $sms->sendSms($requestType, $message, $recipient, $messageType);
     }
 
+    public function adnAjaxNotify(){
+    check_ajax_referer('adn_notification_nonce');
+
+    $data=[];
+    $data['send_sms_registration'] = $_REQUEST['send_sms_registration'];
+    $data['registration_msg'] =  $_REQUEST['registration_msg'];
+    $data['send_sms_password_reset'] =  $_REQUEST['send_sms_password_reset'];
+    $data['password_reset_msg'] =  $_REQUEST['password_reset_msg'];
+    $data['send_sms_birthday'] =  $_REQUEST['send_sms_birthday'];
+    $data['birthday_msg'] =  $_REQUEST['birthday_msg'];
+    $data['send_sms_pending'] =  $_REQUEST['send_sms_pending'];
+    $data['pending_msg'] =  $_REQUEST['pending_msg'];
+    $data['send_sms_processing'] =  $_REQUEST['send_sms_processing'];
+    $data['processing_msg'] =  $_REQUEST['processing_msg'];
+    $data['send_sms_failed'] =  $_REQUEST['send_sms_failed'];
+    $data['failed_msg'] =  $_REQUEST['failed_msg'];
+    $data['send_sms_completed'] =  $_REQUEST['send_sms_completed'];
+    $data['completed_msg'] =  $_REQUEST['completed_msg'];
+    $data['send_sms_cancelled'] =  $_REQUEST['send_sms_cancelled'];
+    $data['cancelled_msg'] =  $_REQUEST['cancelled_msg'];
+
+
+$result = get_option('adn_notify_opt');
+
+if($result!=null){
+    update_option( 'adn_notify_opt', $data ,'yes');
+        echo json_encode(array('status' => 1,'massage'=>'Settings Change Successfully.' ));
+}else{
+    add_option( 'adn_notify_opt', $data ,'yes');
+    echo json_encode(array('status' => 1,'massage'=>'Settings Save Successfully.' ));
+}
+wp_die();
+}
+
+public function adnAjaxSettings(){
+    check_ajax_referer('adn_settings_nonce');
+    $apiKey = $_REQUEST['api_key'];;
+    $apiSecrete = $_REQUEST['password'];;
+    $config = <<<CONFIG
+<?php
+
+if (!defined('API_DOMAIN_URL')) {
+  define('API_DOMAIN_URL', 'https://portal.adnsms.com');
+}
+
+if (!defined('API_KEY')) {
+  define('API_KEY', '$apiKey');
+}
+
+if (!defined('API_SECRET')) {
+  define('API_SECRET', '$apiSecrete');
+}
+
+return [
+    'domain' => constant("API_DOMAIN_URL"),
+    'apiCredentials' => [
+        'api_key' => constant("API_KEY"),
+        'api_secret' => constant("API_SECRET"),
+    ],
+    'apiUrl' => [
+        'check_balance' => "/api/v1/secure/check-balance",
+        'send_sms' => "/api/v1/secure/send-sms",
+        'check_campaign_status' => "/api/v1/secure/campaign-status",
+        'check_sms_status' => "/api/v1/secure/sms-status",
+    ],
+];
+CONFIG;
+
+file_put_contents(PLUGIN_DIR_PATH . 'library/adn_sms_class/config/config.php',$config);
+echo json_encode(array('status' => 1,'massage'=>'Settings Save Successfully.'));
+wp_die();
+}
+
 }
