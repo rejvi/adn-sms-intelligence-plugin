@@ -111,7 +111,7 @@ class Adn_Sms_Intelligence_Plugin_Public {
          */
         $order = wc_get_order( $order_id );
         $order_data = $order->get_data(); // The Order data
-
+        $get_settings = get_option('adn_notify_opt');//get and sms send settings option
 
         ## BILLING INFORMATION:
 
@@ -122,33 +122,36 @@ class Adn_Sms_Intelligence_Plugin_Public {
         $data['order_id']=$order_id;
         $data['costumer_name']=$order_billing_first_name .' '.$order_billing_last_name;
         $data['phone_number']=$order_billing_phone;
-        $data['massage_body']='Hi '. $data['costumer_name'].', Thank you. Your order has been received.';
+        $data['massage_body']='Hi '. $data['costumer_name'].', '.$get_settings['new_order_msg'];
 
         $message = $data['massage_body'];
         $recipient= $data['phone_number'];       // For SINGLE_SMS or OTP
         $requestType = 'SINGLE_SMS';    // options available: "SINGLE_SMS", "OTP"
         $messageType = 'TEXT';         // options available: "TEXT", "UNICODE"
-//
-
         /**
          * send sms new registration
          */
-        $customer_orders = get_posts( array(
-            'numberposts' => -1,
-            'meta_key'    => '_customer_user',
-            'meta_value'  => get_current_user_id(),
-            'post_type'   => wc_get_order_types(),
-            'post_status' => array_keys( wc_get_order_statuses() ),  //'post_status' => array('wc-completed', 'wc-processing'),
-        ) );
+        if($get_settings['send_sms_registration']=='Yes') {
+            $customer_orders = get_posts(array(
+                'numberposts' => -1,
+                'meta_key' => '_customer_user',
+                'meta_value' => get_current_user_id(),
+                'post_type' => wc_get_order_types(),
+                'post_status' => array_keys(wc_get_order_statuses()),  //'post_status' => array('wc-completed', 'wc-processing'),
+            ));
 
-        if(count($customer_orders)==1){
-            $new_reg_message = 'Hi '. $data['costumer_name'].', Your registration is successful.';
-            $new_reg_sms = new AdnSmsNotification();
-            $new_reg_sms->sendSms($requestType, $new_reg_message, $recipient, $messageType);
+            if (count($customer_orders) == 1) {
+                $new_reg_message = 'Hi ' . $data['costumer_name'] .', '. $get_settings['registration_msg'];
+                if($recipient!=null) {
+                    $new_reg_sms = new AdnSmsNotification();
+                    $new_reg_sms->sendSms($requestType, $new_reg_message, $recipient, $messageType);
+                }
+            }
         }
-
-        $sms = new AdnSmsNotification();
-        $sms->sendSms($requestType, $message, $recipient, $messageType);
+        if($recipient!=null && $get_settings['send_sms_new_order']=='Yes'){
+            $sms = new AdnSmsNotification();
+            $sms->sendSms($requestType, $message, $recipient, $messageType);
+        }
     }
 
     public function adn_password_reset( $user, $new_pass ) {
@@ -174,21 +177,23 @@ class Adn_Sms_Intelligence_Plugin_Public {
          *  Send SMS after password rest.
          *
          */
+        $get_settings = get_option('adn_notify_opt');//get and sms send settings option
         $data['first_name'] = get_user_meta( $user->ID,'first_name',true);
         $data['last_name']= get_user_meta( $user->ID,'last_name',true);
         $data['phone_number']= get_user_meta( $user->ID,'billing_phone',true);
 
         $data['costumer_name']= $data['first_name']  .' '.$data['last_name'];
-        $data['massage_body']='Hi '. $data['costumer_name'].', your password is successfully reset.';
+        $data['massage_body']='Hi '. $data['costumer_name'].', '.$get_settings['password_reset_msg'];
         if( $data['phone_number']!=null){
 
             $message = $data['massage_body'];
             $recipient= $data['phone_number'];       // For SINGLE_SMS or OTP
             $requestType = 'SINGLE_SMS';    // options available: "SINGLE_SMS", "OTP"
             $messageType = 'TEXT';         // options available: "TEXT", "UNICODE"
-
-            $sms = new AdnSmsNotification();
-            $sms->sendSms($requestType, $message, $recipient, $messageType);
+            if($recipient!=null){
+                $sms = new AdnSmsNotification();
+                $sms->sendSms($requestType, $message, $recipient, $messageType);
+            }
         }
 
     }

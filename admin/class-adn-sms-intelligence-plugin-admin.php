@@ -217,12 +217,10 @@ class Adn_Sms_Intelligence_Plugin_Admin {
         $recipient= $data['phone_number'];       // For SINGLE_SMS or OTP
         $requestType = 'SINGLE_SMS';    // options available: "SINGLE_SMS", "OTP"
         $messageType = 'TEXT';         // options available: "TEXT", "UNICODE"
-
-        $sms = new AdnSmsNotification();
-        $sms->sendSms($requestType, $message, $recipient, $messageType);
-//from $order you can get all the item information etc
-//above is just a simple example how it works
-//your code to send data
+        if($recipient!=null){
+            $sms = new AdnSmsNotification();
+            $sms->sendSms($requestType, $message, $recipient, $messageType);
+        }
     }
     public function adn_order_status_processing( $order_id) {
 
@@ -230,32 +228,26 @@ class Adn_Sms_Intelligence_Plugin_Admin {
         $order = wc_get_order( $order_id );
 
         $order_data = $order->get_data(); // The Order data
+        $get_settings = get_option('adn_notify_opt');//get and sms send settings option
         ## BILLING INFORMATION:
 
         $order_billing_first_name = $order_data['billing']['first_name'];
         $order_billing_last_name = $order_data['billing']['last_name'];
-        $order_billing_company = $order_data['billing']['company'];
-        $order_billing_address_1 = $order_data['billing']['address_1'];
-        $order_billing_address_2 = $order_data['billing']['address_2'];
-        $order_billing_city = $order_data['billing']['city'];
-        $order_billing_state = $order_data['billing']['state'];
-        $order_billing_postcode = $order_data['billing']['postcode'];
-        $order_billing_country = $order_data['billing']['country'];
-        $order_billing_email = $order_data['billing']['email'];
         $order_billing_phone = $order_data['billing']['phone'];
 
         $data['order_id']=$order_id;
         $data['costumer_name']=$order_billing_first_name .' '.$order_billing_last_name;
         $data['phone_number']=$order_billing_phone;
-        $data['massage_body']='Hi '. $data['costumer_name'].', your order is under processing.';
+        $data['massage_body']='Hi '. $data['costumer_name'].', '.$get_settings['processing_msg'];
 
         $message = $data['massage_body'];
         $recipient= $data['phone_number'];       // For SINGLE_SMS or OTP
         $requestType = 'SINGLE_SMS';    // options available: "SINGLE_SMS", "OTP"
         $messageType = 'TEXT';         // options available: "TEXT", "UNICODE"
-
-        $sms = new AdnSmsNotification();
-        $sms->sendSms($requestType, $message, $recipient, $messageType);
+        if($recipient!=null){
+            $sms = new AdnSmsNotification();
+            $sms->sendSms($requestType, $message, $recipient, $messageType);
+        }
 
         }
     public function adn_order_status_pending( $order_id) {
@@ -268,14 +260,6 @@ class Adn_Sms_Intelligence_Plugin_Admin {
 
         $order_billing_first_name = $order_data['billing']['first_name'];
         $order_billing_last_name = $order_data['billing']['last_name'];
-        $order_billing_company = $order_data['billing']['company'];
-        $order_billing_address_1 = $order_data['billing']['address_1'];
-        $order_billing_address_2 = $order_data['billing']['address_2'];
-        $order_billing_city = $order_data['billing']['city'];
-        $order_billing_state = $order_data['billing']['state'];
-        $order_billing_postcode = $order_data['billing']['postcode'];
-        $order_billing_country = $order_data['billing']['country'];
-        $order_billing_email = $order_data['billing']['email'];
         $order_billing_phone = $order_data['billing']['phone'];
 
         $data['order_id']=$order_id;
@@ -287,9 +271,10 @@ class Adn_Sms_Intelligence_Plugin_Admin {
         $recipient= $data['phone_number'];       // For SINGLE_SMS or OTP
         $requestType = 'SINGLE_SMS';    // options available: "SINGLE_SMS", "OTP"
         $messageType = 'TEXT';         // options available: "TEXT", "UNICODE"
-
-        $sms = new AdnSmsNotification();
-        $sms->sendSms($requestType, $message, $recipient, $messageType);
+        if($recipient!=null){
+            $sms = new AdnSmsNotification();
+            $sms->sendSms($requestType, $message, $recipient, $messageType);
+        }
 
 
     }
@@ -303,28 +288,21 @@ class Adn_Sms_Intelligence_Plugin_Admin {
 
         $order_billing_first_name = $order_data['billing']['first_name'];
         $order_billing_last_name = $order_data['billing']['last_name'];
-        $order_billing_company = $order_data['billing']['company'];
-        $order_billing_address_1 = $order_data['billing']['address_1'];
-        $order_billing_address_2 = $order_data['billing']['address_2'];
-        $order_billing_city = $order_data['billing']['city'];
-        $order_billing_state = $order_data['billing']['state'];
-        $order_billing_postcode = $order_data['billing']['postcode'];
-        $order_billing_country = $order_data['billing']['country'];
-        $order_billing_email = $order_data['billing']['email'];
         $order_billing_phone = $order_data['billing']['phone'];
 
         $data['order_id']=$order_id;
         $data['costumer_name']=$order_billing_first_name .' '.$order_billing_last_name;
         $data['phone_number']=$order_billing_phone;
-        $data['massage_body']='Hi '. $data['costumer_name'].', your order is pending.';
+        $data['massage_body']='Hi '. $data['costumer_name'].', your order is cancelled.';
 
         $message = $data['massage_body'];
         $recipient= $data['phone_number'];       // For SINGLE_SMS or OTP
         $requestType = 'SINGLE_SMS';    // options available: "SINGLE_SMS", "OTP"
         $messageType = 'TEXT';         // options available: "TEXT", "UNICODE"
-
+        if($recipient!=null){
         $sms = new AdnSmsNotification();
         $sms->sendSms($requestType, $message, $recipient, $messageType);
+        }
 
 
     }
@@ -338,14 +316,6 @@ class Adn_Sms_Intelligence_Plugin_Admin {
 
         $order_billing_first_name = $order_data['billing']['first_name'];
         $order_billing_last_name = $order_data['billing']['last_name'];
-        $order_billing_company = $order_data['billing']['company'];
-        $order_billing_address_1 = $order_data['billing']['address_1'];
-        $order_billing_address_2 = $order_data['billing']['address_2'];
-        $order_billing_city = $order_data['billing']['city'];
-        $order_billing_state = $order_data['billing']['state'];
-        $order_billing_postcode = $order_data['billing']['postcode'];
-        $order_billing_country = $order_data['billing']['country'];
-        $order_billing_email = $order_data['billing']['email'];
         $order_billing_phone = $order_data['billing']['phone'];
 
         $data['order_id']=$order_id;
@@ -357,9 +327,10 @@ class Adn_Sms_Intelligence_Plugin_Admin {
         $recipient= $data['phone_number'];       // For SINGLE_SMS or OTP
         $requestType = 'SINGLE_SMS';    // options available: "SINGLE_SMS", "OTP"
         $messageType = 'TEXT';         // options available: "TEXT", "UNICODE"
-
-        $sms = new AdnSmsNotification();
-        $sms->sendSms($requestType, $message, $recipient, $messageType);
+        if($recipient!=null){
+            $sms = new AdnSmsNotification();
+            $sms->sendSms($requestType, $message, $recipient, $messageType);
+        }
 
 
     }
@@ -373,14 +344,6 @@ class Adn_Sms_Intelligence_Plugin_Admin {
 
         $order_billing_first_name = $order_data['billing']['first_name'];
         $order_billing_last_name = $order_data['billing']['last_name'];
-        $order_billing_company = $order_data['billing']['company'];
-        $order_billing_address_1 = $order_data['billing']['address_1'];
-        $order_billing_address_2 = $order_data['billing']['address_2'];
-        $order_billing_city = $order_data['billing']['city'];
-        $order_billing_state = $order_data['billing']['state'];
-        $order_billing_postcode = $order_data['billing']['postcode'];
-        $order_billing_country = $order_data['billing']['country'];
-        $order_billing_email = $order_data['billing']['email'];
         $order_billing_phone = $order_data['billing']['phone'];
 
         $data['order_id']=$order_id;
@@ -392,9 +355,10 @@ class Adn_Sms_Intelligence_Plugin_Admin {
         $recipient= $data['phone_number'];       // For SINGLE_SMS or OTP
         $requestType = 'SINGLE_SMS';    // options available: "SINGLE_SMS", "OTP"
         $messageType = 'TEXT';         // options available: "TEXT", "UNICODE"
-
-        $sms = new AdnSmsNotification();
-        $sms->sendSms($requestType, $message, $recipient, $messageType);
+        if($recipient!=null){
+            $sms = new AdnSmsNotification();
+            $sms->sendSms($requestType, $message, $recipient, $messageType);
+        }
 
 
     }
@@ -407,14 +371,6 @@ class Adn_Sms_Intelligence_Plugin_Admin {
 
         $order_billing_first_name = $order_data['billing']['first_name'];
         $order_billing_last_name = $order_data['billing']['last_name'];
-        $order_billing_company = $order_data['billing']['company'];
-        $order_billing_address_1 = $order_data['billing']['address_1'];
-        $order_billing_address_2 = $order_data['billing']['address_2'];
-        $order_billing_city = $order_data['billing']['city'];
-        $order_billing_state = $order_data['billing']['state'];
-        $order_billing_postcode = $order_data['billing']['postcode'];
-        $order_billing_country = $order_data['billing']['country'];
-        $order_billing_email = $order_data['billing']['email'];
         $order_billing_phone = $order_data['billing']['phone'];
 
         $data['order_id']=$order_id;
@@ -426,9 +382,10 @@ class Adn_Sms_Intelligence_Plugin_Admin {
         $recipient= $data['phone_number'];       // For SINGLE_SMS or OTP
         $requestType = 'SINGLE_SMS';    // options available: "SINGLE_SMS", "OTP"
         $messageType = 'TEXT';         // options available: "TEXT", "UNICODE"
-
-        $sms = new AdnSmsNotification();
-        $sms->sendSms($requestType, $message, $recipient, $messageType);
+        if($recipient!=null){
+            $sms = new AdnSmsNotification();
+            $sms->sendSms($requestType, $message, $recipient, $messageType);
+        }
     }
 
     public function adnAjaxNotify(){
@@ -441,6 +398,10 @@ class Adn_Sms_Intelligence_Plugin_Admin {
     $data['password_reset_msg'] =  $_REQUEST['password_reset_msg'];
     $data['send_sms_birthday'] =  $_REQUEST['send_sms_birthday'];
     $data['birthday_msg'] =  $_REQUEST['birthday_msg'];
+    $data['send_sms_new_order'] =  $_REQUEST['send_sms_new_order'];
+    $data['new_order_msg'] =  $_REQUEST['new_order_msg'];
+    $data['send_sms_on_hold'] =  $_REQUEST['send_sms_on_hold'];
+    $data['on_hold_msg'] =  $_REQUEST['on_hold_msg'];
     $data['send_sms_pending'] =  $_REQUEST['send_sms_pending'];
     $data['pending_msg'] =  $_REQUEST['pending_msg'];
     $data['send_sms_processing'] =  $_REQUEST['send_sms_processing'];
@@ -451,6 +412,8 @@ class Adn_Sms_Intelligence_Plugin_Admin {
     $data['completed_msg'] =  $_REQUEST['completed_msg'];
     $data['send_sms_cancelled'] =  $_REQUEST['send_sms_cancelled'];
     $data['cancelled_msg'] =  $_REQUEST['cancelled_msg'];
+    $data['send_sms_refunded'] =  $_REQUEST['send_sms_refunded'];
+    $data['refunded_msg'] =  $_REQUEST['refunded_msg'];
 
 
 $result = get_option('adn_notify_opt');

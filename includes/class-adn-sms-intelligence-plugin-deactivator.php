@@ -30,7 +30,7 @@ class Adn_Sms_Intelligence_Plugin_Deactivator {
 	 * @since    1.0.0
 	 */
 	public static function deactivate() {
-		delete_option('adn_notifiy_opt');
+		delete_option('adn_notify_opt');
 
 	}
 

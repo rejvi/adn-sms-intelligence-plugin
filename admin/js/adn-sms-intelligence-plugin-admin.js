@@ -36,6 +36,24 @@ $('#birthday_no').on('click', function () {
     $("#birthday_msg").attr("readonly", true);
     $("#birthday_msg").removeAttr('required', true);
 });
+//new_order_script
+$('#new_order_yes').on('click', function () {
+    $("#new_order_msg").removeAttr("readonly", true);
+    $("#new_order_msg").attr('required', true);
+});
+$('#new_order_no').on('click', function () {
+    $("#new_order_msg").attr("readonly", true);
+    $("#new_order_msg").removeAttr('required', true);
+});
+//on_hold_script
+$('#on_hold_yes').on('click', function () {
+    $("#on_hold_msg").removeAttr("readonly", true);
+    $("#on_hold_msg").attr('required', true);
+});
+$('#on_hold_no').on('click', function () {
+    $("#on_hold_msg").attr("readonly", true);
+    $("#on_hold_msg").removeAttr('required', true);
+});
 //pending_script
 $('#pending_yes').on('click', function () {
     $("#pending_msg").removeAttr("readonly", true);
@@ -80,4 +98,13 @@ $('#cancelled_yes').on('click', function () {
 $('#cancelled_no').on('click', function () {
     $("#cancelled_msg").attr("readonly", true);
     $("#cancelled_msg").removeAttr('required', true);
+});
+//refunded_script
+$('#refunded_yes').on('click', function () {
+    $("#refunded_msg").removeAttr("readonly", true);
+    $("#refunded_msg").attr('required', true);
+});
+$('#refunded_no').on('click', function () {
+    $("#refunded_msg").attr("readonly", true);
+    $("#refunded_msg").removeAttr('required', true);
 });
