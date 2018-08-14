@@ -137,6 +137,14 @@ class Adn_Sms_Intelligence_Plugin_Admin {
             "notification-settings",
             array($this,'notification_settings_page')
         );
+        add_submenu_page(
+            "adn-sms-intelligence",
+            "Custom SMS Send",
+            "Custom SMS Send",
+            "manage_options",
+            "custom-sms-send",
+            array($this,'custom_sms_send')
+        );
     }
 
     public function notification_settings_page()
@@ -146,6 +154,10 @@ class Adn_Sms_Intelligence_Plugin_Admin {
     public function general_settings_page()
     {
         include_once PLUGIN_DIR_PATH."/admin/partials/setting_page.php";
+    }
+    public function custom_sms_send()
+    {
+        include_once PLUGIN_DIR_PATH."/admin/partials/custom_sms_send.php";
     }
     public function adn_order_status_completed( $order_id ) {
 
