@@ -19,13 +19,15 @@ $('#registration_no').on('click', function () {
 });
 //password_reset_script
 $('#password_reset_yes').on('click', function () {
+    $("#password_reset_msg").removeAttr("readonly", true);
     $("#password_reset_msg").attr('required', true);
-    $("#password_reset_msg_show").fadeIn(1000);
+
 });
 $('#password_reset_no').on('click', function () {
 
+    $("#password_reset_msg").attr("readonly", true);
     $("#password_reset_msg").removeAttr('required', true);
-    $("#password_reset_msg_show").fadeOut(1000);
+
 });
 //birthday_script
 $('#birthday_yes').on('click', function () {
@@ -107,4 +109,31 @@ $('#refunded_yes').on('click', function () {
 $('#refunded_no').on('click', function () {
     $("#refunded_msg").attr("readonly", true);
     $("#refunded_msg").removeAttr('required', true);
+});
+$('#type').on('change', function() {
+    var value = $(this).val();
+    // alert(value);
+    if(value==='single'){
+        $("#show_number").show();
+        $("#number").removeAttr("disabled", true);
+        $("#number").attr('required', true);
+        $("#show_campaign_title").hide();
+        $("#campaignTitle").attr("disabled", true);
+        $("#campaignTitle").removeAttr('required', true);
+
+    }else if (value==='all'){
+        $("#show_campaign_title").show();
+        $("#campaignTitle").removeAttr("disabled", true);
+        $("#campaignTitle").attr('required', true);
+        $("#show_number").hide();
+        $("#number").attr("disabled", true);
+        $("#number").removeAttr('required', true);
+    }else{
+        $("#show_number").hide();
+        $("#number").attr("disabled", true);
+        $("#number").removeAttr('required', true);
+        $("#show_campaign_title").hide();
+        $("#campaignTitle").attr("disabled", true);
+        $("#campaignTitle").removeAttr('required', true);
+    }
 });

@@ -63,36 +63,6 @@
                     </div>
                 </div>
             </div>
-            <input type="hidden" name="send_sms_birthday" value="<?php echo $result['send_sms_birthday']; ?>">
-            <input type="hidden" name="birthday_msg" value="<?php echo $result['birthday_msg']; ?>">
-
-<!--            <div class="col-sm-12">-->
-<!--                <div class="form-group row">-->
-<!--                    <label class="col-sm-12 col-md-2 control-label ">Send SMS on User Birthday :</label>-->
-<!--                    <div class="col-sm-12 col-md-2">-->
-<!--                        <div class="input-group">-->
-<!--                            <div id="radioBtn" class="btn-group">-->
-<!--                                <a class="btn btn-primary btn-sm --><?php //if($result['send_sms_birthday']=='Yes'){ echo 'active';}else{echo 'notActive';}?><!--" id="birthday_yes" data-toggle="send_sms_birthday" data-title="Yes">YES</a>-->
-<!--                                <a class="btn btn-primary btn-sm --><?php //if($result['send_sms_birthday']=='No'){ echo 'active';}else{echo 'notActive';}?><!--"-->
-<!--                                 id="birthday_no" data-toggle="send_sms_birthday" data-title="No">NO</a>-->
-<!--                            </div>-->
-<!--                            <input type="hidden" name="send_sms_birthday" id="send_sms_birthday" value="--><?php //if(isset($result['send_sms_birthday'])){echo $result['send_sms_birthday'];}else{echo('Yes');} ?><!--">-->
-<!--                            <input type="hidden" name="send_sms_birthday" id="send_sms_birthday" value="--><?php //if(isset($result['send_sms_birthday'])){echo $result['send_sms_birthday'];}else{echo('Yes');} ?><!--">-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!---->
-<!--                    <label class="col-sm-12 col-md-2 control-label" for="birthday_msg">User Birthday Massage :</label>-->
-<!--                    <div class="col-sm-12 col-md-5">-->
-<!---->
-<!--                        <textarea name="birthday_msg" class="form-control" rows="3" id="birthday_msg" placeholder="User Birthday Massage " required --><?php //if($result['send_sms_birthday']=='No'){ echo 'readonly="readonly"';} ?><!--/>--><?php //echo $result['birthday_msg']; ?><!--</textarea>-->
-<!--                    </div>-->
-<!--                    <div class="hidden-xs hidden-sm col-md-1">-->
-<!--                        <div class="tooltips">   <img src="--><?php //echo  PLUGIN_URL."/admin/image/help-icon.png" ?><!--" style="width: 25px;">-->
-<!--                            <span class="tooltipstext">Write your own massage</span>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
 
             <div class="col-sm-12 ">
             <h4  class="p-tb-20px"> <i><b>Notification Settings for Woocommerce Order</b></i></h4>
@@ -301,6 +271,7 @@
                         <textarea name="refunded_msg" class="form-control" rows="3" id="refunded_msg" placeholder="Refunded Massage " required <?php if($result['send_sms_refunded']=='No'){ echo 'readonly="readonly"';} ?>><?php echo $result['refunded_msg']; ?></textarea>
                     </div>
                     <div class="hidden-xs hidden-sm col-md-1">
+
                         <div class="tooltips">   <img src="<?php echo  PLUGIN_URL."/admin/image/help-icon.png" ?>" style="width: 25px;">
                             <span class="tooltipstext">Write your own massage</span>
                         </div>

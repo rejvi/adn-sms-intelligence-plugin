@@ -20,6 +20,8 @@
  */
 
 // If this file is called directly, abort.
+use AdnSms\AdnSmsNotification;
+
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
@@ -83,3 +85,15 @@ function run_adn_sms_intelligence_plugin() {
 run_adn_sms_intelligence_plugin();
 
 
+//$message = 'For SINGLE_SMS or OTP';
+//$recipient= '01933033635';       // For SINGLE_SMS or OTP
+//$requestType = 'SINGLE_SMS';    // options available: "SINGLE_SMS", "OTP"
+//$messageType = 'TEXT';         // options available: "TEXT", "UNICODE"
+//if($recipient!=null){
+//    $sms = new AdnSmsNotification();
+//    $sms=$sms->sendSms($requestType, $message, $recipient, $messageType);
+//}
+//$result = json_decode($sms);
+////echo $result->error->error_message. "<pre>";
+//print_r($sms);
+//exit();

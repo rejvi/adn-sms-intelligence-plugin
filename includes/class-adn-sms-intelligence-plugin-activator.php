@@ -37,8 +37,6 @@ class Adn_Sms_Intelligence_Plugin_Activator {
 	    'registration_msg' =>  'Your registration is successfully completed.',
 	    'send_sms_password_reset' =>  'Yes',
 	    'password_reset_msg' =>  'Your password is successfully reset.',
-	    'send_sms_birthday' =>  'Yes',
-	    'birthday_msg' =>  'Happy Birthday,Wishing you a very happy birthday.',
         'send_sms_new_order' =>  'Yes',
 	    'new_order_msg' =>  'Thank you. Your order has been received.',
         'send_sms_on_hold' =>  'Yes',

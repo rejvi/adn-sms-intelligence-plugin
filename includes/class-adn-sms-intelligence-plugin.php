@@ -192,6 +192,8 @@ class Adn_Sms_Intelligence_Plugin {
         $this->loader->add_action( 'wp_ajax_adnajax', $plugin_admin, 'adnAjaxNotify' );
 
         $this->loader->add_action( 'wp_ajax_adn_settings', $plugin_admin, 'adnAjaxSettings' );
+
+        $this->loader->add_action( 'wp_ajax_adn_custom_sms', $plugin_admin, 'adnAjaxCustomSMS' );
         }
 
 

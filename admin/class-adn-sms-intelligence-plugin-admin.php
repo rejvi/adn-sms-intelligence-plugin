@@ -164,6 +164,7 @@ class Adn_Sms_Intelligence_Plugin_Admin {
         $order = wc_get_order( $order_id );
 
         $order_data = $order->get_data(); // The Order data
+        $get_settings = get_option('adn_notify_opt');//get and sms send settings option
         $order_id = $order_data['id'];
         $order_parent_id = $order_data['parent_id'];
         $order_status = $order_data['status'];
@@ -223,7 +224,7 @@ class Adn_Sms_Intelligence_Plugin_Admin {
         $data['order_id']=$order_id;
         $data['costumer_name']=$order_billing_first_name .' '.$order_billing_last_name;
         $data['phone_number']=$order_billing_phone;
-        $data['massage_body']='Hi '. $data['costumer_name'].', your order is completed.Thank you for your purchase.';
+        $data['massage_body']='Hi '. $data['costumer_name'].', '.$get_settings['completed_msg'];
 
         $message = $data['massage_body'];
         $recipient= $data['phone_number'];       // For SINGLE_SMS or OTP
@@ -267,7 +268,7 @@ class Adn_Sms_Intelligence_Plugin_Admin {
         $order = wc_get_order( $order_id );
 
         $order_data = $order->get_data(); // The Order data
-
+        $get_settings = get_option('adn_notify_opt');//get and sms send settings option
         ## BILLING INFORMATION:
 
         $order_billing_first_name = $order_data['billing']['first_name'];
@@ -277,7 +278,7 @@ class Adn_Sms_Intelligence_Plugin_Admin {
         $data['order_id']=$order_id;
         $data['costumer_name']=$order_billing_first_name .' '.$order_billing_last_name;
         $data['phone_number']=$order_billing_phone;
-        $data['massage_body']='Hi '. $data['costumer_name'].', your order is pending.';
+        $data['massage_body']='Hi '. $data['costumer_name'].', '.$get_settings['pending_msg'];
 
         $message = $data['massage_body'];
         $recipient= $data['phone_number'];       // For SINGLE_SMS or OTP
@@ -295,7 +296,7 @@ class Adn_Sms_Intelligence_Plugin_Admin {
         $order = wc_get_order( $order_id );
 
         $order_data = $order->get_data(); // The Order data
-
+        $get_settings = get_option('adn_notify_opt');//get and sms send settings option
         ## BILLING INFORMATION:
 
         $order_billing_first_name = $order_data['billing']['first_name'];
@@ -305,7 +306,7 @@ class Adn_Sms_Intelligence_Plugin_Admin {
         $data['order_id']=$order_id;
         $data['costumer_name']=$order_billing_first_name .' '.$order_billing_last_name;
         $data['phone_number']=$order_billing_phone;
-        $data['massage_body']='Hi '. $data['costumer_name'].', your order is cancelled.';
+        $data['massage_body']='Hi '. $data['costumer_name'].', '.$get_settings['cancelled_msg'];
 
         $message = $data['massage_body'];
         $recipient= $data['phone_number'];       // For SINGLE_SMS or OTP
@@ -323,7 +324,7 @@ class Adn_Sms_Intelligence_Plugin_Admin {
         $order = wc_get_order( $order_id );
 
         $order_data = $order->get_data(); // The Order data
-
+        $get_settings = get_option('adn_notify_opt');//get and sms send settings option
         ## BILLING INFORMATION:
 
         $order_billing_first_name = $order_data['billing']['first_name'];
@@ -333,7 +334,7 @@ class Adn_Sms_Intelligence_Plugin_Admin {
         $data['order_id']=$order_id;
         $data['costumer_name']=$order_billing_first_name .' '.$order_billing_last_name;
         $data['phone_number']=$order_billing_phone;
-        $data['massage_body']='Hi '. $data['costumer_name'].', your order is failed.';
+        $data['massage_body']='Hi '. $data['costumer_name'].', '.$get_settings['failed_msg'];
 
         $message = $data['massage_body'];
         $recipient= $data['phone_number'];       // For SINGLE_SMS or OTP
@@ -351,7 +352,7 @@ class Adn_Sms_Intelligence_Plugin_Admin {
         $order = wc_get_order( $order_id );
 
         $order_data = $order->get_data(); // The Order data
-
+        $get_settings = get_option('adn_notify_opt');//get and sms send settings option
         ## BILLING INFORMATION:
 
         $order_billing_first_name = $order_data['billing']['first_name'];
@@ -361,7 +362,7 @@ class Adn_Sms_Intelligence_Plugin_Admin {
         $data['order_id']=$order_id;
         $data['costumer_name']=$order_billing_first_name .' '.$order_billing_last_name;
         $data['phone_number']=$order_billing_phone;
-        $data['massage_body']='Hi '. $data['costumer_name'].', your payment is refunded.';
+        $data['massage_body']='Hi '. $data['costumer_name'].', '.$get_settings['refunded_msg'];
 
         $message = $data['massage_body'];
         $recipient= $data['phone_number'];       // For SINGLE_SMS or OTP
@@ -378,7 +379,7 @@ class Adn_Sms_Intelligence_Plugin_Admin {
         $order = wc_get_order( $order_id );
 
         $order_data = $order->get_data(); // The Order data
-
+        $get_settings = get_option('adn_notify_opt');//get and sms send settings option
         ## BILLING INFORMATION:
 
         $order_billing_first_name = $order_data['billing']['first_name'];
@@ -388,7 +389,7 @@ class Adn_Sms_Intelligence_Plugin_Admin {
         $data['order_id']=$order_id;
         $data['costumer_name']=$order_billing_first_name .' '.$order_billing_last_name;
         $data['phone_number']=$order_billing_phone;
-        $data['massage_body']='Hi '. $data['costumer_name'].', your order is on hold.';
+        $data['massage_body']='Hi '. $data['costumer_name'].', '.$get_settings['on_hold_msg'];
 
         $message = $data['massage_body'];
         $recipient= $data['phone_number'];       // For SINGLE_SMS or OTP
@@ -408,8 +409,6 @@ class Adn_Sms_Intelligence_Plugin_Admin {
     $data['registration_msg'] =  $_REQUEST['registration_msg'];
     $data['send_sms_password_reset'] =  $_REQUEST['send_sms_password_reset'];
     $data['password_reset_msg'] =  $_REQUEST['password_reset_msg'];
-    $data['send_sms_birthday'] =  $_REQUEST['send_sms_birthday'];
-    $data['birthday_msg'] =  $_REQUEST['birthday_msg'];
     $data['send_sms_new_order'] =  $_REQUEST['send_sms_new_order'];
     $data['new_order_msg'] =  $_REQUEST['new_order_msg'];
     $data['send_sms_on_hold'] =  $_REQUEST['send_sms_on_hold'];
@@ -478,5 +477,62 @@ file_put_contents(PLUGIN_DIR_PATH . 'library/adn_sms_class/config/config.php',$c
 echo json_encode(array('status' => 1,'massage'=>'Settings Save Successfully.'));
 wp_die();
 }
+
+    public function adnAjaxCustomSMS(){
+        check_ajax_referer('adn_custom_sms_nonce');
+            $message = $_REQUEST['custom_msg'];
+        if($_REQUEST['type']=='single'){
+            $recipient= $_REQUEST['number'];       // For SINGLE_SMS or OTP
+            $requestType = 'SINGLE_SMS';    // options available: "SINGLE_SMS", "OTP"
+            $messageType = 'TEXT';         // options available: "TEXT", "UNICODE"
+            if($recipient!=null){
+                $sms = new AdnSmsNotification();
+                $sms = $sms->sendSms($requestType, $message, $recipient, $messageType);
+                $result = json_decode($sms);
+                if($result->api_response_code==200){
+                     echo json_encode(array('status' => 1,'massage'=>'SMS Send Successfully.'));
+               }else{
+
+                    echo json_encode(array('status' => 1,'massage'=> $result->error->error_message));
+                }
+
+            }else{
+                echo json_encode(array('status' => 1, 'massage' => 'Something Wrong Try Again.'));
+            }
+        }else{
+            global $wpdb;
+
+            $myrows = $wpdb->get_results( "SELECT  meta_value FROM $wpdb->usermeta WHERE meta_key='billing_phone'" ,ARRAY_A );
+            $new_arr="";
+            foreach ($myrows as $myrow){
+                if(is_array($myrow)){
+                    $new_arr .= $myrow['meta_value'].',';
+                }
+            }
+            $recipient=substr ( $new_arr , 0 , strlen($new_arr) -1 );// For bulk sms i.e. general campaign
+//            echo json_encode(array('status' => 1, 'massage' => $recipient));
+            $messageType = 'TEXT'; // option available: "TEXT", "UNICODE"
+            $campaignTitle = $_REQUEST['campaign_title']; // set a meaningful campaign title
+            if($recipient!=null){
+            $sms = new AdnSmsNotification();
+            $sms=$sms->sendBulkSms($message, $recipient, $messageType, $campaignTitle);
+
+            $result = json_decode($sms);
+            if($result->api_response_code==200){
+                echo json_encode(array('status' => 1,'massage'=> $_REQUEST['campaign_title'].' Campaign Successfully Completed.'));
+            }else{
+                echo json_encode(array('status' => 1,'massage'=> $result->error->error_message));
+            }
+
+
+            }else {
+                echo json_encode(array('status' => 1, 'massage' => 'Something Wrong, No Number Found.'));
+            }
+
+        }
+
+        wp_die();
+
+    }
 
 }
