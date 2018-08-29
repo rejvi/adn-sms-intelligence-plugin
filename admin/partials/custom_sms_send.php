@@ -8,12 +8,10 @@
 
                 Custom SMS Send
             </h4>
-
+            <?php if(API_KEY!=null && API_SECRET!=null){ ?>
             <div class="col-sm-6">
-
-
                 <div class="form-group row">
-                    <label for="type" class="col-sm-4 col-md-4 control-label ">Select Type:</label>
+                    <label for="type" class="col-sm-4 col-md-4 control-label text-right">Select Type:</label>
                     <div class="col-sm-8 col-md-8">
                         <select class="form-control" id="type" required name="type">
                             <option value="" >Select</option>
@@ -23,14 +21,14 @@
                     </div>
                 </div>
                 <div class="form-group row" style="display: none" id="show_campaign_title">
-                    <label for="campaignTitle" class="col-sm-4 col-md-4 control-label ">Campaign Title :</label>
+                    <label for="campaignTitle" class="col-sm-4 col-md-4 control-label text-right ">Campaign Title :</label>
                     <div class="col-sm-8 col-md-8">
                         <input type="text" class="form-control" name="campaign_title" id="campaignTitle" placeholder="Campaign Title" disabled>
 
                     </div>
                 </div>
                 <div class="form-group row" style="display: none" id="show_number">
-                    <label for="number" class="col-sm-4 col-md-4 control-label ">Number :</label>
+                    <label for="number" class="col-sm-4 col-md-4 control-label text-right">Number :</label>
                     <div class="col-sm-8 col-md-8">
                         <input type="number" class="form-control" name="number" id="number" placeholder="Number" disabled>
 
@@ -38,16 +36,31 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="massage" class="col-sm-4 col-md-4 control-label ">Massage :</label>
+                    <label for="massage" class="col-sm-4 col-md-4 control-label text-right ">Massage :</label>
                     <div class="col-sm-8 col-md-8">
                      <textarea name="custom_msg" class="form-control" id="massage" rows="6"  placeholder="Write Your Massage " required></textarea>
                     </div>
                  </div>
-                <?php
-                submit_button('Send');
-                ?>
+                <div class="form-group row">
+
+                    <div class="col-sm-4 col-md-4 ">
+
+                    </div>
+                    <div class="col-sm-8 col-md-8 ">
+                        <input type="submit" name="send" id="send" class="button button-primary" value="Send">
+                    </div>
+                </div>
 
             </div>
+            <?php }else{ ?>
+       <div class="col-sm-12">
+                <h4 class="p-tb-20px"> <i><b>
+              <?php    $url = admin_url('admin.php?page=adn-sms-intelligence');
+                echo "Set API KEY & API SECRET <a href='$url'>Click Here</a>";
+                ?>
+                        </b></i></h4>
+       </div>
+          <?php  }?>
 
         </div>
     </form>

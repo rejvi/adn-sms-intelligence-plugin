@@ -164,36 +164,37 @@ class Adn_Sms_Intelligence_Plugin {
         $user = wp_get_current_user();
 
         if(isset($user->roles[0]) && ($user->roles[0]=='administrator' || $user->roles[0]=='shop_manager')){
+            include(PLUGIN_DIR_PATH . 'library/adn_sms_class/config/config.php');
+                $notify_settings = get_option('adn_notify_opt');
+            if(API_KEY!=null && API_SECRET!=null) {
+                if ($notify_settings['send_sms_completed'] == 'Yes') {
+                    $this->loader->add_action('woocommerce_order_status_completed', $plugin_admin, 'adn_order_status_completed');
+                }
+                if ($notify_settings['send_sms_pending'] == 'Yes') {
+                    $this->loader->add_action('woocommerce_order_status_pending', $plugin_admin, 'adn_order_status_pending');
+                }
+                if ($notify_settings['send_sms_processing'] == 'Yes') {
+                    $this->loader->add_action('woocommerce_order_status_processing', $plugin_admin, 'adn_order_status_processing');
+                }
+                if ($notify_settings['send_sms_cancelled'] == 'Yes') {
+                    $this->loader->add_action('woocommerce_order_status_cancelled', $plugin_admin, 'adn_order_status_cancelled');
+                }
+                if ($notify_settings['send_sms_failed'] == 'Yes') {
+                    $this->loader->add_action('woocommerce_order_status_failed', $plugin_admin, 'adn_order_status_failed');
+                }
+                if ($notify_settings['send_sms_refunded'] == 'Yes') {
+                    $this->loader->add_action('woocommerce_order_status_refunded', $plugin_admin, 'adn_order_status_refunded');
+                }
+                if ($notify_settings['send_sms_on_hold'] == 'Yes') {
+                    $this->loader->add_action('woocommerce_order_status_on-hold', $plugin_admin, 'adn_order_status_on_hold');
+                }
+            }
+                $this->loader->add_action('wp_ajax_adnajax', $plugin_admin, 'adnAjaxNotify');
 
+                $this->loader->add_action('wp_ajax_adn_settings', $plugin_admin, 'adnAjaxSettings');
 
-            $notify_settings = get_option('adn_notify_opt');
-//        print_r($notify_settings);exit();
-        if($notify_settings['send_sms_completed']=='Yes'){
-         $this->loader->add_action( 'woocommerce_order_status_completed', $plugin_admin, 'adn_order_status_completed' );
-        }
-        if($notify_settings['send_sms_pending']=='Yes'){
-        $this->loader->add_action( 'woocommerce_order_status_pending', $plugin_admin, 'adn_order_status_pending' );
-        }
-        if($notify_settings['send_sms_processing']=='Yes'){
-        $this->loader->add_action( 'woocommerce_order_status_processing', $plugin_admin, 'adn_order_status_processing' );
-        }
-        if($notify_settings['send_sms_cancelled']=='Yes'){
-        $this->loader->add_action( 'woocommerce_order_status_cancelled', $plugin_admin, 'adn_order_status_cancelled' );
-        }
-        if($notify_settings['send_sms_failed']=='Yes'){
-        $this->loader->add_action( 'woocommerce_order_status_failed', $plugin_admin, 'adn_order_status_failed' );
-        }
-        if($notify_settings['send_sms_refunded']=='Yes'){
-        $this->loader->add_action( 'woocommerce_order_status_refunded', $plugin_admin, 'adn_order_status_refunded' );
-        }
-        if($notify_settings['send_sms_on_hold']=='Yes'){
-        $this->loader->add_action( 'woocommerce_order_status_on-hold', $plugin_admin, 'adn_order_status_on_hold' );
-        }
-        $this->loader->add_action( 'wp_ajax_adnajax', $plugin_admin, 'adnAjaxNotify' );
+                $this->loader->add_action('wp_ajax_adn_custom_sms', $plugin_admin, 'adnAjaxCustomSMS');
 
-        $this->loader->add_action( 'wp_ajax_adn_settings', $plugin_admin, 'adnAjaxSettings' );
-
-        $this->loader->add_action( 'wp_ajax_adn_custom_sms', $plugin_admin, 'adnAjaxCustomSMS' );
         }
 
 
@@ -215,14 +216,16 @@ class Adn_Sms_Intelligence_Plugin {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
         $notify_settings = get_option('adn_notify_opt');
-        if($notify_settings['send_sms_new_order']=='Yes' || $notify_settings['send_sms_registration']=='Yes') {
-            $this->loader->add_action('woocommerce_new_order', $plugin_public, 'adn_new_order');
+        include(PLUGIN_DIR_PATH . 'library/adn_sms_class/config/config.php');
+        if(API_KEY!=null && API_SECRET!=null) {
+            if ($notify_settings['send_sms_new_order'] == 'Yes' || $notify_settings['send_sms_registration'] == 'Yes') {
+                $this->loader->add_action('woocommerce_new_order', $plugin_public, 'adn_new_order');
+            }
+            if ($notify_settings['send_sms_password_reset'] == 'Yes') {
+                $this->loader->add_action('password_reset', $plugin_public, 'adn_password_reset', 10, 2);
+                $this->loader->add_action('send_sms_after_password_reset', $plugin_public, 'adn_send_sms_after_password_reset');
+            }
         }
-        if($notify_settings['send_sms_password_reset']=='Yes') {
-            $this->loader->add_action('password_reset', $plugin_public, 'adn_password_reset', 10, 2);
-            $this->loader->add_action('send_sms_after_password_reset', $plugin_public, 'adn_send_sms_after_password_reset');
-        }
-
 	}
 
 	/**

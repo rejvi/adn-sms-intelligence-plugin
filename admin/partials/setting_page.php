@@ -8,29 +8,35 @@
 
                 General Settings
             </h4>
-<?php
-  $config= include(__DIR__ . '/../../library/adn_sms_class/config/config.php');
+       <div class="col-sm-6">
+           <?php
+           if(API_KEY==null && API_SECRET==null) { echo "<h4 class='error'>Set API KEY & API SECRET </h4>";}
+           if(API_KEY==null) { echo "<h4 class='error'>Set API KEY</h4>";}
+           if(API_SECRET==null) { echo "<h4 class='error'>Set API SECRET</h4>";}
+           ?>
 
-?>
-            <div class="col-sm-6">
-                        <div class="form-group row">
-                            <label for="api_key" class="col-sm-4 col-md-4 control-label ">API Key :</label>
+           <div class="form-group row">
+                            <label for="api_key" class="col-sm-4 col-md-4 control-label text-right ">API Key :</label>
                             <div class="col-sm-8 col-md-8">
                             <input type="text" class="form-control" name="api_key" id="api_key" placeholder="API Key" value="<?php echo API_KEY ;?>" required>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="api_secret" class="col-sm-4 col-md-4 control-label ">API Secret :</label>
+                            <label for="api_secret" class="col-sm-4 col-md-4 control-label text-right ">API Secret :</label>
                             <div class="col-sm-8 col-md-8 ">
                             <input type="text" class="form-control"  name="password"  id="api_secret" placeholder="API Secret" value="<?php echo API_SECRET ;?>" required>
                             </div>
                         </div>
+                       <div class="form-group row">
 
-                <?php
-                submit_button('Save');
-                ?>
+                           <div class="col-sm-4 col-md-4 ">
 
+                           </div>
+                           <div class="col-sm-8 col-md-8 ">
+                           <input type="submit" name="submit" id="submit" class="button button-primary" value="Save">
+                           </div>
+                       </div>
             </div>
 
         </div>

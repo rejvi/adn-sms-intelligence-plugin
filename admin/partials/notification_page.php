@@ -8,11 +8,15 @@
                SMS Notification Settings
             </h4>
             <div class="col-sm-12">
-            <h4 class="p-tb-20px"> <i><b>Notification Settings for User </b></i></h4>
+            <h4 class="p-tb-20px"> <i><b> <?php if(API_KEY!=null && API_SECRET!=null){echo 'Notification Settings for User ';}else{
+                            $url = admin_url('admin.php?page=adn-sms-intelligence');
+            echo "Set API KEY & API SECRET <a href='$url'>Click Here</a> ";}?>
+                    </b></i></h4>
             <?php
             $result = get_option('adn_notify_opt');
             ?>
             </div>
+    <?php if(API_KEY!=null && API_SECRET!=null) {?>
             <div class="col-sm-12">
                 <div class="form-group row">
                     <label class="col-sm-12 col-md-2 control-label ">Send SMS on Registration :</label>
@@ -290,7 +294,9 @@
                 ?>
             </div>
         </div>
+        <?php } ?>
     </form>
+
 </div>
 
 <?php  include(__DIR__ . '/_footer.php'); ?>

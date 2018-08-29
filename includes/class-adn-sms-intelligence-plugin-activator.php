@@ -30,6 +30,21 @@ class Adn_Sms_Intelligence_Plugin_Activator {
 	 * @since    1.0.0
 	 */
 	public static function activate() {
+
+          /**
+           * Check if WooCommerce & Cubepoints are active
+           **/
+          if ( !in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+
+              // Deactivate the plugin
+              deactivate_plugins(__FILE__);
+
+              // Throw an error in the wordpress admin console
+              $error_message = __('This plugin requires <a href="http://wordpress.org/plugins/woocommerce/" target="_blank">WooCommerce</a> plugins to be active!', 'woocommerce');
+
+//              die($error_message);
+          }
+
 	if(!get_option('adn_notify_opt')) {
 
 	    $data = array(

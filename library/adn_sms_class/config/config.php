@@ -1,7 +1,7 @@
 <?php
 
 if (!defined('API_DOMAIN_URL')) {
-  define('API_DOMAIN_URL', 'https://core.adnsms.com');
+  define('API_DOMAIN_URL', 'https://portal.adnsms.com');
 }
 
 if (!defined('API_KEY')) {
