@@ -20,7 +20,7 @@
  */
 
 // If this file is called directly, abort.
-
+use AdnSms\AdnSmsNotification;
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
@@ -81,3 +81,9 @@ function run_adn_sms_intelligence_plugin() {
 
 }
 run_adn_sms_intelligence_plugin();
+/*
+ * For Checking Balance with checkBalance() method.
+ * */
+$smsNotification = new AdnSmsNotification();
+$smsNotification =$smsNotification->checkBalance();
+//print_r($smsNotification );exit();

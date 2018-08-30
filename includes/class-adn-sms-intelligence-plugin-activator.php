@@ -42,7 +42,7 @@ class Adn_Sms_Intelligence_Plugin_Activator {
               // Throw an error in the wordpress admin console
               $error_message = __('This plugin requires <a href="http://wordpress.org/plugins/woocommerce/" target="_blank">WooCommerce</a> plugins to be active!', 'woocommerce');
 
-//              die($error_message);
+              die($error_message);
           }
 
 	if(!get_option('adn_notify_opt')) {
