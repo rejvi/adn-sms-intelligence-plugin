@@ -137,3 +137,14 @@ $('#type').on('change', function() {
         $("#campaignTitle").removeAttr('required', true);
     }
 });
+
+$(".toggle-password").click(function() {
+    var input = $($(this).attr("toggle"));
+    if (input.attr("type") == "password") {
+        input.attr("type", "text");
+        $(".field-icon").text("Hide");
+    } else {
+        input.attr("type", "password");
+        $(".field-icon").text("Show");
+    }
+});

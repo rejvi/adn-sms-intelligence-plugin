@@ -25,10 +25,15 @@
                         <div class="form-group row">
                             <label for="api_secret" class="col-sm-4 col-md-4 control-label text-right ">API Secret :</label>
                             <div class="col-sm-8 col-md-8 ">
-                            <input type="text" class="form-control"  name="password"  id="api_secret" placeholder="API Secret" value="<?php echo API_SECRET ;?>" required>
+                            <input type="password" class="form-control"  name="password"  id="api_secret" placeholder="API Secret" value="<?php echo API_SECRET ;?>" required>
+                                <span toggle="#api_secret" class="btn btn-warning field-icon toggle-password">Show</span>
+
+
                             </div>
                         </div>
-                       <div class="form-group row">
+
+
+           <div class="form-group row">
 
                            <div class="col-sm-4 col-md-4 ">
 
@@ -37,6 +42,7 @@
                            <input type="submit" name="submit" id="submit" class="button button-primary" value="Save">
                            </div>
                        </div>
+
             </div>
 
         </div>
@@ -63,4 +69,5 @@
                 }
             });
         });
+
     </script>

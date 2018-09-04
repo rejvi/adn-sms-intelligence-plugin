@@ -91,3 +91,16 @@ footer {
     visibility: visible;
     opacity: 1;
 }
+
+.field-icon {
+    float: right;
+    margin-left: -25px;
+    margin-top: -33px;
+    position: relative;
+    z-index: 2;
+    padding-right: 10px;
+    border-radius: 0px 4px 4px 0px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #0f0f0f;
+}
