@@ -145,6 +145,14 @@ class Adn_Sms_Intelligence_Plugin_Admin {
             "custom-sms-send",
             array($this,'custom_sms_send')
         );
+        add_submenu_page(
+            "adn-sms-intelligence",
+            "SMS Balance",
+            "SMS Balance",
+            "manage_options",
+            "sms-balance",
+            array($this,'sms_balance')
+        );
     }
 
     public function notification_settings_page()
@@ -158,6 +166,10 @@ class Adn_Sms_Intelligence_Plugin_Admin {
     public function custom_sms_send()
     {
         include_once PLUGIN_DIR_PATH."/admin/partials/custom_sms_send.php";
+    }
+    public function sms_balance()
+    {
+        include_once PLUGIN_DIR_PATH."/admin/partials/sms_balance_info.php";
     }
     public function adn_order_status_completed( $order_id ) {
 
@@ -533,6 +545,13 @@ wp_die();
 
         wp_die();
 
+    }
+   public function low_sms_notice() {
+        ?>
+        <div class="error notice my-acf-notice is-dismissible">
+            <p><?php _e( 'Low SMS Balance ! Please Recharge ', '' ); ?></p>
+        </div>
+        <?php
     }
 
 }
