@@ -443,10 +443,10 @@ $result = get_option('adn_notify_opt');
 
 if($result!=null){
     update_option( 'adn_notify_opt', $data ,'yes');
-        echo json_encode(array('status' => 1,'massage'=>'Settings Change Successfully.' ));
+        echo json_encode(array('status' => 1,'massage'=>'Settings Changed Successfully.' ));
 }else{
     add_option( 'adn_notify_opt', $data ,'yes');
-    echo json_encode(array('status' => 1,'massage'=>'Settings Save Successfully.' ));
+    echo json_encode(array('status' => 1,'massage'=>'Settings Saved Successfully.' ));
 }
 wp_die();
 }
@@ -486,7 +486,7 @@ return [
 CONFIG;
 
 file_put_contents(PLUGIN_DIR_PATH . 'library/adn_sms_class/config/config.php',$config);
-echo json_encode(array('status' => 1,'massage'=>'Settings Save Successfully.'));
+echo json_encode(array('status' => 1,'massage'=>'Settings Saved Successfully.'));
 wp_die();
 }
 
@@ -501,15 +501,20 @@ wp_die();
                 $sms = new AdnSmsNotification();
                 $sms = $sms->sendSms($requestType, $message, $recipient, $messageType);
                 $result = json_decode($sms);
-                if($result->api_response_code==200){
+             if(isset($result)){
+                 if($result->api_response_code==200){
                      echo json_encode(array('status' => 1,'massage'=>'SMS Send Successfully.'));
-               }else{
+                 }else{
 
-                    echo json_encode(array('status' => 1,'massage'=> $result->error->error_message));
-                }
+                     echo json_encode(array('status' => 1,'massage'=> $result->error->error_message));
+                 }
+             }else{
+                 echo json_encode(array('status' => 1,'massage'=>'Something went wrong please try again later'));
+             }
+
 
             }else{
-                echo json_encode(array('status' => 1, 'massage' => 'Something Wrong Try Again.'));
+                echo json_encode(array('status' => 1, 'massage' => 'Please Enter Your Number'));
             }
         }else{
             global $wpdb;
@@ -538,7 +543,7 @@ wp_die();
 
 
             }else {
-                echo json_encode(array('status' => 1, 'massage' => 'Something Wrong, No Number Found.'));
+                echo json_encode(array('status' => 1, 'massage' => 'No Number Found.'));
             }
 
         }

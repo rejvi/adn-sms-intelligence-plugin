@@ -12,11 +12,11 @@
                 $sms = new \AdnSms\AdnSmsNotification();
                 $sms =$sms->checkBalance();
                 $balance = json_decode($sms);
-               if($balance->api_response_code==200) {
+               if(isset($balance)&&$balance->api_response_code==200) {
                 ?>
 
                     <section class="info-boxes">
-                        <?php if (isset($balance) && $balance->balance->sms!=null){ ?>
+                        <?php if (isset($balance) && $balance->balance->sms!==null){ ?>
                         <div class="col-sm-4">
                         <div class="info-box ">
                             <div class="box-content">
@@ -62,6 +62,15 @@
                     </section>
 
             <?php }else{ ?>
+                   <div class="col-sm-12">
+                       <h4 class="p-tb-20px"> <i><b>
+                        Something Went Wrong !
+                               </b></i></h4>
+                   </div>
+
+
+
+            <?php }} else{ ?>
                 <div class="col-sm-12">
                     <h4 class="p-tb-20px"> <i><b>
                                 <?php    $url = admin_url('admin.php?page=adn-sms-intelligence');
@@ -69,7 +78,7 @@
                                 ?>
                             </b></i></h4>
                 </div>
-            <?php  }}?>
+            <?php  }?>
 
         </div>
     </form>

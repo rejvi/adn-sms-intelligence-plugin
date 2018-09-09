@@ -81,6 +81,7 @@
                     if(status.status==1){
                         alert(status.massage);
                     }
+                    document.forms['custom_sms'].reset();
                     location.reload();
                 })
             }
