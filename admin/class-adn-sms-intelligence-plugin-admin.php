@@ -173,103 +173,72 @@ class Adn_Sms_Intelligence_Plugin_Admin {
     }
     public function adn_order_status_completed( $order_id ) {
 
-        $order = wc_get_order( $order_id );
+        $order = wc_get_order( $order_id ); //get order information
 
-        $order_data = $order->get_data(); // The Order data
+        $order_data = $order->get_data(); // get Order data
         $get_settings = get_option('adn_notify_opt');//get and sms send settings option
-        $order_id = $order_data['id'];
-        $order_parent_id = $order_data['parent_id'];
-        $order_status = $order_data['status'];
-        $order_currency = $order_data['currency'];
-        $order_version = $order_data['version'];
-        $order_payment_method = $order_data['payment_method'];
-        $order_payment_method_title = $order_data['payment_method_title'];
-        $order_payment_method = $order_data['payment_method'];
-        $order_payment_method = $order_data['payment_method'];
 
-## Creation and modified WC_DateTime Object date string ##
+        $site_name = get_bloginfo( 'name' ); //site name
+        $orderID = '#'.$order_id;  //order id
+        $amount = $order_data['total'].' '.$order_data['currency'];  //total amount
+        $costumer_name = $order_data['billing']['first_name'].' '.$order_data['billing']['last_name']; //customer name
 
-// Using a formated date ( with php date() function as method)
-        $order_date_created = $order_data['date_created']->date('Y-m-d H:i:s');
-        $order_date_modified = $order_data['date_modified']->date('Y-m-d H:i:s');
-
-// Using a timestamp ( with php getTimestamp() function as method)
-        $order_timestamp_created = $order_data['date_created']->getTimestamp();
-        $order_timestamp_modified = $order_data['date_modified']->getTimestamp();
-
-
-        $order_discount_total = $order_data['discount_total'];
-        $order_discount_tax = $order_data['discount_tax'];
-        $order_shipping_total = $order_data['shipping_total'];
-        $order_shipping_tax = $order_data['shipping_tax'];
-        $order_total = $order_data['cart_tax'];
-        $order_total_tax = $order_data['total_tax'];
-        $order_customer_id = $order_data['customer_id']; // ... and so on
-
-## BILLING INFORMATION:
-
-        $order_billing_first_name = $order_data['billing']['first_name'];
-        $order_billing_last_name = $order_data['billing']['last_name'];
-        $order_billing_company = $order_data['billing']['company'];
-        $order_billing_address_1 = $order_data['billing']['address_1'];
-        $order_billing_address_2 = $order_data['billing']['address_2'];
-        $order_billing_city = $order_data['billing']['city'];
-        $order_billing_state = $order_data['billing']['state'];
-        $order_billing_postcode = $order_data['billing']['postcode'];
-        $order_billing_country = $order_data['billing']['country'];
-        $order_billing_email = $order_data['billing']['email'];
-        $order_billing_phone = $order_data['billing']['phone'];
-
-## SHIPPING INFORMATION:
-
-        $order_shipping_first_name = $order_data['shipping']['first_name'];
-        $order_shipping_last_name = $order_data['shipping']['last_name'];
-        $order_shipping_company = $order_data['shipping']['company'];
-        $order_shipping_address_1 = $order_data['shipping']['address_1'];
-        $order_shipping_address_2 = $order_data['shipping']['address_2'];
-        $order_shipping_city = $order_data['shipping']['city'];
-        $order_shipping_state = $order_data['shipping']['state'];
-        $order_shipping_postcode = $order_data['shipping']['postcode'];
-        $order_shipping_country = $order_data['shipping']['country'];
-
-
-        $data['order_id']=$order_id;
-        $data['costumer_name']=$order_billing_first_name .' '.$order_billing_last_name;
-        $data['phone_number']=$order_billing_phone;
-        $data['massage_body']='Hi '. $data['costumer_name'].', '.$get_settings['completed_msg'];
-
-        $message = $data['massage_body'];
-        $recipient= $data['phone_number'];       // For SINGLE_SMS or OTP
-        $requestType = 'SINGLE_SMS';    // options available: "SINGLE_SMS", "OTP"
-        $messageType = 'TEXT';         // options available: "TEXT", "UNICODE"
-        if($recipient!=null){
+        $message=$get_settings['completed_msg']; //message body
+        $recipient = $order_data['billing']['phone'];  // phone number
+        $requestType = 'SINGLE_SMS';    // single sms request
+        $messageType = 'TEXT';         // sms type text
+        //dynamic sms body
+        if (strpos($message, '[USER_NAME]') !== false) {
+            $message = str_replace("[USER_NAME]",$costumer_name,$message);
+        }
+        if (strpos($message, '[AMOUNT]') !== false) {
+            $message = str_replace("[AMOUNT]",$amount,$message);
+        }
+        if (strpos($message, '[ORDER_ID]') !== false) {
+            $message = str_replace("[ORDER_ID]",$orderID,$message);
+        }
+        if (strpos($message, '[SITE_NAME]') !== false) {
+            $message = str_replace("[SITE_NAME]",$site_name,$message);
+        }
+        //send sms
+        if($recipient != null){
             $sms = new AdnSmsNotification();
             $sms->sendSms($requestType, $message, $recipient, $messageType);
         }
+
     }
     public function adn_order_status_processing( $order_id) {
 
 
-        $order = wc_get_order( $order_id );
+        $order = wc_get_order( $order_id ); //get order information
 
-        $order_data = $order->get_data(); // The Order data
+        $order_data = $order->get_data(); // get Order data
         $get_settings = get_option('adn_notify_opt');//get and sms send settings option
-        ## BILLING INFORMATION:
 
-        $order_billing_first_name = $order_data['billing']['first_name'];
-        $order_billing_last_name = $order_data['billing']['last_name'];
-        $order_billing_phone = $order_data['billing']['phone'];
+        $site_name = get_bloginfo( 'name' ); //site name
+        $orderID = '#'.$order_id;  //order id
+        $amount = $order_data['total'].' '.$order_data['currency'];  //total amount
+        $costumer_name = $order_data['billing']['first_name'].' '.$order_data['billing']['last_name']; //customer name
 
-        $data['order_id']=$order_id;
-        $data['costumer_name']=$order_billing_first_name .' '.$order_billing_last_name;
-        $data['phone_number']=$order_billing_phone;
-        $data['massage_body']='Hi '. $data['costumer_name'].', '.$get_settings['processing_msg'];
-
-        $message = $data['massage_body'];
-        $recipient= $data['phone_number'];       // For SINGLE_SMS or OTP
-        $requestType = 'SINGLE_SMS';    // options available: "SINGLE_SMS", "OTP"
-        $messageType = 'TEXT';         // options available: "TEXT", "UNICODE"
-        if($recipient!=null){
+        $message=$get_settings['processing_msg']; //message body
+        $recipient = $order_data['billing']['phone'];  // phone number
+        $requestType = 'SINGLE_SMS';    // single sms request
+        $messageType = 'TEXT';         // sms type text
+        //dynamic sms body
+        if (strpos($message, '[USER_NAME]') !== false) {
+        $message = str_replace("[USER_NAME]",$costumer_name,$message);
+        }
+        if (strpos($message, '[AMOUNT]') !== false) {
+            $message = str_replace("[AMOUNT]",$amount,$message);
+        }
+        if (strpos($message, '[ORDER_ID]') !== false) {
+            $message = str_replace("[ORDER_ID]",$orderID,$message);
+        }
+        if (strpos($message, '[SITE_NAME]') !== false) {
+            $message = str_replace("[SITE_NAME]",$site_name,$message);
+        }
+        //send sms
+        if($recipient != null){
             $sms = new AdnSmsNotification();
             $sms->sendSms($requestType, $message, $recipient, $messageType);
         }
@@ -277,141 +246,184 @@ class Adn_Sms_Intelligence_Plugin_Admin {
         }
     public function adn_order_status_pending( $order_id) {
 
-        $order = wc_get_order( $order_id );
+        $order = wc_get_order( $order_id ); //get order information
 
-        $order_data = $order->get_data(); // The Order data
+        $order_data = $order->get_data(); // get Order data
         $get_settings = get_option('adn_notify_opt');//get and sms send settings option
-        ## BILLING INFORMATION:
 
-        $order_billing_first_name = $order_data['billing']['first_name'];
-        $order_billing_last_name = $order_data['billing']['last_name'];
-        $order_billing_phone = $order_data['billing']['phone'];
+        $site_name = get_bloginfo( 'name' ); //site name
+        $orderID = '#'.$order_id;  //order id
+        $amount = $order_data['total'].' '.$order_data['currency'];  //total amount
+        $costumer_name = $order_data['billing']['first_name'].' '.$order_data['billing']['last_name']; //customer name
 
-        $data['order_id']=$order_id;
-        $data['costumer_name']=$order_billing_first_name .' '.$order_billing_last_name;
-        $data['phone_number']=$order_billing_phone;
-        $data['massage_body']='Hi '. $data['costumer_name'].', '.$get_settings['pending_msg'];
-
-        $message = $data['massage_body'];
-        $recipient= $data['phone_number'];       // For SINGLE_SMS or OTP
-        $requestType = 'SINGLE_SMS';    // options available: "SINGLE_SMS", "OTP"
-        $messageType = 'TEXT';         // options available: "TEXT", "UNICODE"
-        if($recipient!=null){
+        $message=$get_settings['pending_msg']; //message body
+        $recipient = $order_data['billing']['phone'];  // phone number
+        $requestType = 'SINGLE_SMS';    // single sms request
+        $messageType = 'TEXT';         // sms type text
+        //dynamic sms body
+        if (strpos($message, '[USER_NAME]') !== false) {
+            $message = str_replace("[USER_NAME]",$costumer_name,$message);
+        }
+        if (strpos($message, '[AMOUNT]') !== false) {
+            $message = str_replace("[AMOUNT]",$amount,$message);
+        }
+        if (strpos($message, '[ORDER_ID]') !== false) {
+            $message = str_replace("[ORDER_ID]",$orderID,$message);
+        }
+        if (strpos($message, '[SITE_NAME]') !== false) {
+            $message = str_replace("[SITE_NAME]",$site_name,$message);
+        }
+        //send sms
+        if($recipient != null){
             $sms = new AdnSmsNotification();
             $sms->sendSms($requestType, $message, $recipient, $messageType);
         }
-
 
     }
     public function adn_order_status_cancelled( $order_id) {
 
-        $order = wc_get_order( $order_id );
+        $order = wc_get_order( $order_id ); //get order information
 
-        $order_data = $order->get_data(); // The Order data
+        $order_data = $order->get_data(); // get Order data
         $get_settings = get_option('adn_notify_opt');//get and sms send settings option
-        ## BILLING INFORMATION:
 
-        $order_billing_first_name = $order_data['billing']['first_name'];
-        $order_billing_last_name = $order_data['billing']['last_name'];
-        $order_billing_phone = $order_data['billing']['phone'];
+        $site_name = get_bloginfo( 'name' ); //site name
+        $orderID = '#'.$order_id;  //order id
+        $amount = $order_data['total'].' '.$order_data['currency'];  //total amount
+        $costumer_name = $order_data['billing']['first_name'].' '.$order_data['billing']['last_name']; //customer name
 
-        $data['order_id']=$order_id;
-        $data['costumer_name']=$order_billing_first_name .' '.$order_billing_last_name;
-        $data['phone_number']=$order_billing_phone;
-        $data['massage_body']='Hi '. $data['costumer_name'].', '.$get_settings['cancelled_msg'];
-
-        $message = $data['massage_body'];
-        $recipient= $data['phone_number'];       // For SINGLE_SMS or OTP
-        $requestType = 'SINGLE_SMS';    // options available: "SINGLE_SMS", "OTP"
-        $messageType = 'TEXT';         // options available: "TEXT", "UNICODE"
-        if($recipient!=null){
-        $sms = new AdnSmsNotification();
-        $sms->sendSms($requestType, $message, $recipient, $messageType);
+        $message = $get_settings['cancelled_msg']; //message body
+        $recipient = $order_data['billing']['phone'];  // phone number
+        $requestType = 'SINGLE_SMS';    // single sms request
+        $messageType = 'TEXT';         // sms type text
+        //dynamic sms body
+        if (strpos($message, '[USER_NAME]') !== false) {
+            $message = str_replace("[USER_NAME]",$costumer_name,$message);
         }
-
+        if (strpos($message, '[AMOUNT]') !== false) {
+            $message = str_replace("[AMOUNT]",$amount,$message);
+        }
+        if (strpos($message, '[ORDER_ID]') !== false) {
+            $message = str_replace("[ORDER_ID]",$orderID,$message);
+        }
+        if (strpos($message, '[SITE_NAME]') !== false) {
+            $message = str_replace("[SITE_NAME]",$site_name,$message);
+        }
+        //send sms
+        if($recipient != null){
+            $sms = new AdnSmsNotification();
+            $sms->sendSms($requestType, $message, $recipient, $messageType);
+        }
 
     }
     public function adn_order_status_failed( $order_id) {
 
-        $order = wc_get_order( $order_id );
+        $order = wc_get_order( $order_id ); //get order information
 
-        $order_data = $order->get_data(); // The Order data
+        $order_data = $order->get_data(); // get Order data
         $get_settings = get_option('adn_notify_opt');//get and sms send settings option
-        ## BILLING INFORMATION:
 
-        $order_billing_first_name = $order_data['billing']['first_name'];
-        $order_billing_last_name = $order_data['billing']['last_name'];
-        $order_billing_phone = $order_data['billing']['phone'];
+        $site_name = get_bloginfo( 'name' ); //site name
+        $orderID = '#'.$order_id;  //order id
+        $amount = $order_data['total'].' '.$order_data['currency'];  //total amount
+        $costumer_name = $order_data['billing']['first_name'].' '.$order_data['billing']['last_name']; //customer name
 
-        $data['order_id']=$order_id;
-        $data['costumer_name']=$order_billing_first_name .' '.$order_billing_last_name;
-        $data['phone_number']=$order_billing_phone;
-        $data['massage_body']='Hi '. $data['costumer_name'].', '.$get_settings['failed_msg'];
-
-        $message = $data['massage_body'];
-        $recipient= $data['phone_number'];       // For SINGLE_SMS or OTP
-        $requestType = 'SINGLE_SMS';    // options available: "SINGLE_SMS", "OTP"
-        $messageType = 'TEXT';         // options available: "TEXT", "UNICODE"
-        if($recipient!=null){
+        $message=$get_settings['failed_msg']; //message body
+        $recipient = $order_data['billing']['phone'];  // phone number
+        $requestType = 'SINGLE_SMS';    // single sms request
+        $messageType = 'TEXT';         // sms type text
+        //dynamic sms body
+        if (strpos($message, '[USER_NAME]') !== false) {
+            $message = str_replace("[USER_NAME]",$costumer_name,$message);
+        }
+        if (strpos($message, '[AMOUNT]') !== false) {
+            $message = str_replace("[AMOUNT]",$amount,$message);
+        }
+        if (strpos($message, '[ORDER_ID]') !== false) {
+            $message = str_replace("[ORDER_ID]",$orderID,$message);
+        }
+        if (strpos($message, '[SITE_NAME]') !== false) {
+            $message = str_replace("[SITE_NAME]",$site_name,$message);
+        }
+        //send sms
+        if($recipient != null){
             $sms = new AdnSmsNotification();
             $sms->sendSms($requestType, $message, $recipient, $messageType);
         }
-
-
     }
     public function adn_order_status_refunded( $order_id) {
 
-        $order = wc_get_order( $order_id );
+        $order = wc_get_order( $order_id ); //get order information
 
-        $order_data = $order->get_data(); // The Order data
+        $order_data = $order->get_data(); // get Order data
         $get_settings = get_option('adn_notify_opt');//get and sms send settings option
-        ## BILLING INFORMATION:
 
-        $order_billing_first_name = $order_data['billing']['first_name'];
-        $order_billing_last_name = $order_data['billing']['last_name'];
-        $order_billing_phone = $order_data['billing']['phone'];
+        $site_name = get_bloginfo( 'name' ); //site name
+        $orderID = '#'.$order_id;  //order id
+        $amount = $order_data['total'].' '.$order_data['currency'];  //total amount
+        $costumer_name = $order_data['billing']['first_name'].' '.$order_data['billing']['last_name']; //customer name
 
-        $data['order_id']=$order_id;
-        $data['costumer_name']=$order_billing_first_name .' '.$order_billing_last_name;
-        $data['phone_number']=$order_billing_phone;
-        $data['massage_body']='Hi '. $data['costumer_name'].', '.$get_settings['refunded_msg'];
-
-        $message = $data['massage_body'];
-        $recipient= $data['phone_number'];       // For SINGLE_SMS or OTP
-        $requestType = 'SINGLE_SMS';    // options available: "SINGLE_SMS", "OTP"
-        $messageType = 'TEXT';         // options available: "TEXT", "UNICODE"
-        if($recipient!=null){
+        $message=$get_settings['refunded_msg']; //message body
+        $recipient = $order_data['billing']['phone'];  // phone number
+        $requestType = 'SINGLE_SMS';    // single sms request
+        $messageType = 'TEXT';         // sms type text
+        //dynamic sms body
+        if (strpos($message, '[USER_NAME]') !== false) {
+            $message = str_replace("[USER_NAME]",$costumer_name,$message);
+        }
+        if (strpos($message, '[AMOUNT]') !== false) {
+            $message = str_replace("[AMOUNT]",$amount,$message);
+        }
+        if (strpos($message, '[ORDER_ID]') !== false) {
+            $message = str_replace("[ORDER_ID]",$orderID,$message);
+        }
+        if (strpos($message, '[SITE_NAME]') !== false) {
+            $message = str_replace("[SITE_NAME]",$site_name,$message);
+        }
+        //send sms
+        if($recipient != null){
             $sms = new AdnSmsNotification();
             $sms->sendSms($requestType, $message, $recipient, $messageType);
         }
-
 
     }
     public function adn_order_status_on_hold($order_id){
-        $order = wc_get_order( $order_id );
 
-        $order_data = $order->get_data(); // The Order data
+        $order = wc_get_order( $order_id ); //get order information
+
+        $order_data = $order->get_data(); // get Order data
         $get_settings = get_option('adn_notify_opt');//get and sms send settings option
-        ## BILLING INFORMATION:
 
-        $order_billing_first_name = $order_data['billing']['first_name'];
-        $order_billing_last_name = $order_data['billing']['last_name'];
-        $order_billing_phone = $order_data['billing']['phone'];
+        $site_name = get_bloginfo( 'name' ); //site name
+        $orderID = '#'.$order_id;  //order id
+        $amount = $order_data['total'].' '.$order_data['currency'];  //total amount
+        $costumer_name = $order_data['billing']['first_name'].' '.$order_data['billing']['last_name']; //customer name
 
-        $data['order_id']=$order_id;
-        $data['costumer_name']=$order_billing_first_name .' '.$order_billing_last_name;
-        $data['phone_number']=$order_billing_phone;
-        $data['massage_body']='Hi '. $data['costumer_name'].', '.$get_settings['on_hold_msg'];
+        $message=$get_settings['on_hold_msg']; //message body
+        $recipient = $order_data['billing']['phone'];  // phone number
+        $requestType = 'SINGLE_SMS';    // single sms request
+        $messageType = 'TEXT';         // sms type text
+        //dynamic sms body
+        if (strpos($message, '[USER_NAME]') !== false) {
+            $message = str_replace("[USER_NAME]",$costumer_name,$message);
+        }
+        if (strpos($message, '[AMOUNT]') !== false) {
+            $message = str_replace("[AMOUNT]",$amount,$message);
+        }
+        if (strpos($message, '[ORDER_ID]') !== false) {
+            $message = str_replace("[ORDER_ID]",$orderID,$message);
+        }
+        if (strpos($message, '[SITE_NAME]') !== false) {
+            $message = str_replace("[SITE_NAME]",$site_name,$message);
+        }
+        //send sms
 
-        $message = $data['massage_body'];
-        $recipient= $data['phone_number'];       // For SINGLE_SMS or OTP
-        $requestType = 'SINGLE_SMS';    // options available: "SINGLE_SMS", "OTP"
-        $messageType = 'TEXT';         // options available: "TEXT", "UNICODE"
-        if($recipient!=null){
+        if($recipient != null){
             $sms = new AdnSmsNotification();
             $sms->sendSms($requestType, $message, $recipient, $messageType);
         }
-    }
+
+	}
 
     public function adnAjaxNotify(){
     check_ajax_referer('adn_notification_nonce');
@@ -441,7 +453,7 @@ class Adn_Sms_Intelligence_Plugin_Admin {
 
 $result = get_option('adn_notify_opt');
 
-if($result!=null){
+if($result != null){
     update_option( 'adn_notify_opt', $data ,'yes');
         echo json_encode(array('status' => 1,'massage'=>'Settings Changed Successfully.' ));
 }else{
@@ -493,11 +505,11 @@ wp_die();
     public function adnAjaxCustomSMS(){
         check_ajax_referer('adn_custom_sms_nonce');
             $message = $_REQUEST['custom_msg'];
-        if($_REQUEST['type']=='single'){
-            $recipient= $_REQUEST['number'];       // For SINGLE_SMS or OTP
+        if($_REQUEST['type'] == 'single'){
+            $recipient = $_REQUEST['number'];       // For SINGLE_SMS or OTP
             $requestType = 'SINGLE_SMS';    // options available: "SINGLE_SMS", "OTP"
             $messageType = 'TEXT';         // options available: "TEXT", "UNICODE"
-            if($recipient!=null){
+            if($recipient != null){
                 $sms = new AdnSmsNotification();
                 $sms = $sms->sendSms($requestType, $message, $recipient, $messageType);
                 $result = json_decode($sms);
@@ -520,7 +532,7 @@ wp_die();
             global $wpdb;
 
             $myrows = $wpdb->get_results( "SELECT  meta_value FROM $wpdb->usermeta WHERE meta_key='billing_phone'" ,ARRAY_A );
-            $new_arr="";
+            $new_arr = "";
             foreach ($myrows as $myrow){
                 if(is_array($myrow)){
                     $new_arr .= $myrow['meta_value'].',';
@@ -530,12 +542,12 @@ wp_die();
 //            echo json_encode(array('status' => 1, 'massage' => $recipient));
             $messageType = 'TEXT'; // option available: "TEXT", "UNICODE"
             $campaignTitle = $_REQUEST['campaign_title']; // set a meaningful campaign title
-            if($recipient!=null){
+            if($recipient != null){
             $sms = new AdnSmsNotification();
             $sms=$sms->sendBulkSms($message, $recipient, $messageType, $campaignTitle);
 
             $result = json_decode($sms);
-            if($result->api_response_code==200){
+            if($result->api_response_code == 200){
                 echo json_encode(array('status' => 1,'massage'=> $_REQUEST['campaign_title'].' Campaign Successfully Completed.'));
             }else{
                 echo json_encode(array('status' => 1,'massage'=> $result->error->error_message));

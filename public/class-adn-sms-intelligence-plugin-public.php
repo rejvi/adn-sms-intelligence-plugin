@@ -109,29 +109,38 @@ class Adn_Sms_Intelligence_Plugin_Public {
          *  Send SMS  in new order.
          *
          */
-        $order = wc_get_order( $order_id );
-        $order_data = $order->get_data(); // The Order data
+        $order = wc_get_order( $order_id ); //get order information
+
+        $order_data = $order->get_data(); // get Order data
         $get_settings = get_option('adn_notify_opt');//get and sms send settings option
 
-        ## BILLING INFORMATION:
+        $site_name = get_bloginfo( 'name' ); //site name
+        $orderID = '#'.$order_id;  //order id
+        $amount = $order_data['total'].' '.$order_data['currency'];  //total amount
+        $costumer_name = $order_data['billing']['first_name'].' '.$order_data['billing']['last_name']; //customer name
 
-        $order_billing_first_name = $order_data['billing']['first_name'];
-        $order_billing_last_name = $order_data['billing']['last_name'];
-        $order_billing_phone = $order_data['billing']['phone'];
+        $message = $get_settings['new_order_msg']; // new order message body
+        $recipient = $order_data['billing']['phone'];  // phone number
+        $requestType = 'SINGLE_SMS';    // single sms request
+        $messageType = 'TEXT';         // sms type text
+        //dynamic sms body
+        if (strpos($message, '[USER_NAME]') !== false) {
+            $message = str_replace("[USER_NAME]",$costumer_name,$message);
+        }
+        if (strpos($message, '[AMOUNT]') !== false) {
+            $message = str_replace("[AMOUNT]",$amount,$message);
+        }
+        if (strpos($message, '[ORDER_ID]') !== false) {
+            $message = str_replace("[ORDER_ID]",$orderID,$message);
+        }
+        if (strpos($message, '[SITE_NAME]') !== false) {
+            $message = str_replace("[SITE_NAME]",$site_name,$message);
+        }
 
-        $data['order_id']=$order_id;
-        $data['costumer_name']=$order_billing_first_name .' '.$order_billing_last_name;
-        $data['phone_number']=$order_billing_phone;
-        $data['massage_body']='Hi '. $data['costumer_name'].', '.$get_settings['new_order_msg'];
-
-        $message = $data['massage_body'];
-        $recipient= $data['phone_number'];       // For SINGLE_SMS or OTP
-        $requestType = 'SINGLE_SMS';    // options available: "SINGLE_SMS", "OTP"
-        $messageType = 'TEXT';         // options available: "TEXT", "UNICODE"
         /**
          * send sms new registration
          */
-        if($get_settings['send_sms_registration']=='Yes') {
+        if($get_settings['send_sms_registration'] == 'Yes') {
             $customer_orders = get_posts(array(
                 'numberposts' => -1,
                 'meta_key' => '_customer_user',
@@ -141,14 +150,23 @@ class Adn_Sms_Intelligence_Plugin_Public {
             ));
 
             if (count($customer_orders) == 1) {
-                $new_reg_message = 'Hi ' . $data['costumer_name'] .', '. $get_settings['registration_msg'];
-                if($recipient!=null) {
+                $new_reg_message = $get_settings['registration_msg']; //new user registration message body
+                //dynamic sms body
+                if (strpos($new_reg_message, '[USER_NAME]') !== false) {
+                    $new_reg_message = str_replace("[USER_NAME]",$costumer_name,$new_reg_message);
+                }
+                if (strpos($new_reg_message, '[SITE_NAME]') !== false) {
+                    $new_reg_message = str_replace("[SITE_NAME]",$site_name,$new_reg_message);
+                }
+                //send sms on new user registration
+                if($recipient != null) {
                     $new_reg_sms = new AdnSmsNotification();
                     $new_reg_sms->sendSms($requestType, $new_reg_message, $recipient, $messageType);
                 }
             }
         }
-        if($recipient!=null && $get_settings['send_sms_new_order']=='Yes'){
+        //send sms on new order
+        if($recipient != null && $get_settings['send_sms_new_order'] == 'Yes'){
             $sms = new AdnSmsNotification();
             $sms->sendSms($requestType, $message, $recipient, $messageType);
         }
@@ -177,24 +195,28 @@ class Adn_Sms_Intelligence_Plugin_Public {
          *  Send SMS after password rest.
          *
          */
-        $get_settings = get_option('adn_notify_opt');//get and sms send settings option
-        $data['first_name'] = get_user_meta( $user->ID,'first_name',true);
-        $data['last_name']= get_user_meta( $user->ID,'last_name',true);
-        $data['phone_number']= get_user_meta( $user->ID,'billing_phone',true);
-
-        $data['costumer_name']= $data['first_name']  .' '.$data['last_name'];
-        $data['massage_body']='Hi '. $data['costumer_name'].', '.$get_settings['password_reset_msg'];
-        if( $data['phone_number']!=null){
-
-            $message = $data['massage_body'];
-            $recipient= $data['phone_number'];       // For SINGLE_SMS or OTP
-            $requestType = 'SINGLE_SMS';    // options available: "SINGLE_SMS", "OTP"
-            $messageType = 'TEXT';         // options available: "TEXT", "UNICODE"
-            if($recipient!=null){
-                $sms = new AdnSmsNotification();
-                $sms->sendSms($requestType, $message, $recipient, $messageType);
-            }
+        $get_settings = get_option('adn_notify_opt'); //get and sms send settings option
+        $first_name = get_user_meta( $user->ID,'first_name',true); //first name
+        $last_name = get_user_meta( $user->ID,'last_name',true); //last name
+        $recipient = get_user_meta( $user->ID,'billing_phone',true); // phone number
+        $site_name = get_bloginfo( 'name' ); //site name
+        $costumer_name = $first_name.' '.$last_name; //customer name
+        $message = $get_settings['password_reset_msg']; //message body
+        $requestType = 'SINGLE_SMS';    // single sms request
+        $messageType = 'TEXT';         // sms type text
+        //dynamic sms body
+        if (strpos($message, '[USER_NAME]') !== false) {
+            $message = str_replace("[USER_NAME]",$costumer_name,$message);
         }
+        if (strpos($message, '[SITE_NAME]') !== false) {
+            $message = str_replace("[SITE_NAME]",$site_name,$message);
+        }
+        //send sms
+        if($recipient!=null){
+            $sms = new AdnSmsNotification();
+            $sms->sendSms($requestType, $message, $recipient, $messageType);
+        }
+
 
     }
 

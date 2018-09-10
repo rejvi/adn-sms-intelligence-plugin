@@ -191,7 +191,7 @@ class Adn_Sms_Intelligence_Plugin {
 
                     $smsBalance = new \AdnSms\AdnSmsNotification();
                     $smsBalance =json_decode($smsBalance->checkBalance());
-                    if(isset($smsBalance)&& $smsBalance->api_response_code==200 && $smsBalance->balance->sms!=null && $smsBalance->balance->sms<=100 ){
+                    if(isset($smsBalance)&& $smsBalance->api_response_code==200 && $smsBalance->balance->sms!==null && $smsBalance->balance->sms<=100 ){
                         $this->loader->add_action('admin_notices', $plugin_admin, 'low_sms_notice');
                     }
 

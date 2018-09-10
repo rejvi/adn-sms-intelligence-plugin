@@ -6,18 +6,29 @@
             <h4>
                 <img src="<?php echo  PLUGIN_URL."/admin/image/adnsms.png" ?>">
                SMS Notification Settings
+
             </h4>
             <div class="col-sm-12">
-            <h4 class="p-tb-20px"> <i><b> <?php if(API_KEY!=null && API_SECRET!=null){echo 'Notification Settings for User ';}else{
-                            $url = admin_url('admin.php?page=adn-sms-intelligence');
-            echo "Set API KEY & API SECRET <a href='$url'>Click Here</a> ";}?>
-                    </b></i></h4>
+                <?php if(API_KEY!=null && API_SECRET!=null){?>
+                    <h4 class="text-center " style="color: #694c90;}">Dynamic SMS Body Keywords: <span style="color: red">[USER_NAME]</span> = Customer Name , <span style="color: red">[ORDER_ID]</span> = Order ID, <span style="color: red">[AMOUNT]</span> = Total Amount, <span style="color: red">[SITE_NAME]</span> = Website Name.  </h4>
+                <?php } ?>
+            <h4 class="p-tb-20px"> <i><b>
+                 <?php if(API_KEY!=null && API_SECRET!=null){
+                     echo 'Notification Settings for User';
+                 }
+                 else{
+                       $url = admin_url('admin.php?page=adn-sms-intelligence');
+                        echo "Set API KEY & API SECRET <a href='$url'>Click Here</a> ";
+                 }?>
+              </b></i></h4>
             <?php
             $result = get_option('adn_notify_opt');
             ?>
             </div>
     <?php if(API_KEY!=null && API_SECRET!=null) {?>
+
             <div class="col-sm-12">
+
                 <div class="form-group row">
                     <label class="col-sm-12 col-md-2 control-label ">Send SMS on Registration :</label>
                     <div class="col-sm-12 col-md-2">
@@ -36,7 +47,7 @@
                     </div>
                     <div class="hidden-xs hidden-sm col-md-1">
                         <div class="tooltips">   <img src="<?php echo  PLUGIN_URL."/admin/image/help-icon.png" ?>" style="width: 25px;">
-                            <span class="tooltipstext">Write your own massage</span>
+                            <span class="tooltipstext">Note: Keyword Must be capitalized and should not contain any other keyword except [USER_NAME],[ORDER_ID],[AMOUNT] & [SITE_NAME].</span>
                         </div>
                     </div>
                 </div>
@@ -62,7 +73,7 @@
                     </div>
                     <div class="hidden-xs hidden-sm col-md-1">
                         <div class="tooltips">   <img src="<?php echo  PLUGIN_URL."/admin/image/help-icon.png" ?>" style="width: 25px;">
-                            <span class="tooltipstext">Write your own massage</span>
+                            <span class="tooltipstext">Note: Keyword Must be capitalized and should not contain any other keyword except [USER_NAME],[ORDER_ID],[AMOUNT] & [SITE_NAME].</span>
                         </div>
                     </div>
                 </div>
@@ -94,7 +105,7 @@
                     </div>
                     <div class="hidden-xs hidden-sm col-md-1">
                         <div class="tooltips">   <img src="<?php echo  PLUGIN_URL."/admin/image/help-icon.png" ?>" style="width: 25px;">
-                            <span class="tooltipstext">Write your own massage</span>
+                            <span class="tooltipstext">Note: Keyword Must be capitalized and should not contain any other keyword except [USER_NAME],[ORDER_ID],[AMOUNT] & [SITE_NAME].</span>
                         </div>
                     </div>
                 </div>
@@ -120,7 +131,7 @@
                     </div>
                     <div class="hidden-xs hidden-sm col-md-1">
                         <div class="tooltips">   <img src="<?php echo  PLUGIN_URL."/admin/image/help-icon.png" ?>" style="width: 25px;">
-                            <span class="tooltipstext">Write your own massage</span>
+                            <span class="tooltipstext">Note: Keyword Must be capitalized and should not contain any other keyword except [USER_NAME],[ORDER_ID],[AMOUNT] & [SITE_NAME].</span>
                         </div>
                     </div>
                 </div>
@@ -145,7 +156,7 @@
                     </div>
                     <div class="hidden-xs hidden-sm col-md-1">
                         <div class="tooltips">   <img src="<?php echo  PLUGIN_URL."/admin/image/help-icon.png" ?>" style="width: 25px;">
-                            <span class="tooltipstext">Write your own massage</span>
+                            <span class="tooltipstext">Note: Keyword Must be capitalized and should not contain any other keyword except [USER_NAME],[ORDER_ID],[AMOUNT] & [SITE_NAME].</span>
                         </div>
                     </div>
                 </div>
@@ -170,7 +181,7 @@
                     </div>
                     <div class="hidden-xs hidden-sm col-md-1">
                         <div class="tooltips">   <img src="<?php echo  PLUGIN_URL."/admin/image/help-icon.png" ?>" style="width: 25px;">
-                            <span class="tooltipstext">Write your own massage</span>
+                            <span class="tooltipstext">Note: Keyword Must be capitalized and should not contain any other keyword except [USER_NAME],[ORDER_ID],[AMOUNT] & [SITE_NAME].</span>
                         </div>
                     </div>
                 </div>
@@ -197,7 +208,7 @@
                     </div>
                     <div class="hidden-xs hidden-sm col-md-1">
                         <div class="tooltips">   <img src="<?php echo  PLUGIN_URL."/admin/image/help-icon.png" ?>" style="width: 25px;">
-                            <span class="tooltipstext">Write your own massage</span>
+                            <span class="tooltipstext">Note: Keyword Must be capitalized and should not contain any other keyword except [USER_NAME],[ORDER_ID],[AMOUNT] & [SITE_NAME].</span>
                         </div>
                     </div>
                 </div>
@@ -223,7 +234,7 @@
                     </div>
                     <div class="hidden-xs hidden-sm col-md-1">
                         <div class="tooltips">   <img src="<?php echo  PLUGIN_URL."/admin/image/help-icon.png" ?>" style="width: 25px;">
-                            <span class="tooltipstext">Write your own massage</span>
+                            <span class="tooltipstext">Note: Keyword Must be capitalized and should not contain any other keyword except [USER_NAME],[ORDER_ID],[AMOUNT] & [SITE_NAME].</span>
                         </div>
                     </div>
                 </div>
@@ -250,7 +261,7 @@
                     </div>
                     <div class="hidden-xs hidden-sm col-md-1">
                     <div class="tooltips">   <img src="<?php echo  PLUGIN_URL."/admin/image/help-icon.png" ?>" style="width: 25px;">
-                        <span class="tooltipstext">Write your own massage</span>
+                        <span class="tooltipstext">Note: Keyword Must be capitalized and should not contain any other keyword except [USER_NAME],[ORDER_ID],[AMOUNT] & [SITE_NAME].</span>
                     </div>
                     </div>
                 </div>
@@ -277,7 +288,7 @@
                     <div class="hidden-xs hidden-sm col-md-1">
 
                         <div class="tooltips">   <img src="<?php echo  PLUGIN_URL."/admin/image/help-icon.png" ?>" style="width: 25px;">
-                            <span class="tooltipstext">Write your own massage</span>
+                            <span class="tooltipstext">Note: Keyword Must be capitalized and should not contain any other keyword except [USER_NAME],[ORDER_ID],[AMOUNT] & [SITE_NAME].</span>
                         </div>
                     </div>
                 </div>

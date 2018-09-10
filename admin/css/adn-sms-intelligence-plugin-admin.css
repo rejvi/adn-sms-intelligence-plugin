@@ -90,6 +90,7 @@ footer {
 .tooltips:hover .tooltipstext {
     visibility: visible;
     opacity: 1;
+    z-index: 99999;
 }
 
 .field-icon {
