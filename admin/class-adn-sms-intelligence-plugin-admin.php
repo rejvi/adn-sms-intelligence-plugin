@@ -18,7 +18,7 @@
  *
  * @package    Adn_Sms_Intelligence_Plugin
  * @subpackage Adn_Sms_Intelligence_Plugin/admin
- * @author     ADN SMS <info@adnsms.com>
+ * @author     ADN Digital Software Team <softwareteam@adndigital.com.bd>
  */
 
 require_once(PLUGIN_DIR_PATH."library/adn_sms_class/lib/AdnSmsNotification.php");

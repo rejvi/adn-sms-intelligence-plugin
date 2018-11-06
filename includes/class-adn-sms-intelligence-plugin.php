@@ -72,7 +72,7 @@ class Adn_Sms_Intelligence_Plugin {
 		} else {
 			$this->version = '1.0.0';
 		}
-		$this->plugin_name = 'adn-sms-intelligence-plugin';
+		$this->plugin_name = 'adn-sms-intelligence-plugin-test';
 
 		$this->load_dependencies();
 		$this->set_locale();

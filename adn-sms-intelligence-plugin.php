@@ -1,22 +1,20 @@
 <?php
 
 /**
- *
  * @link              https://adnsms.com/
  * @since             1.0.0
  * @package           Adn_Sms_Intelligence_Plugin
  *
  * @wordpress-plugin
  * Plugin Name:       ADNsms Intelligence Plugin
- * Plugin URI:        https://wordpress.org/plugins/adn-sms-intelligence-plugin/
+ * Plugin URI:        https://adnsms.com/
  * Description:       This is an Intelligence Plugin. By Using this plugin customer can get notification after login registration placing order via sms using ADNsms Intelligence Plugin.
  * Version:           1.0.0
- * Author:            ADN SMS
- * Author URI:        https://adnsms.com/
- * License:           GPL-2.0+
- * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
+ * Author:            ADN Digital Software Team
+ * Author URI:        https://adndigital.com.bd/
+ * License:           GPLv3
+ * License URI:       https://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain:       adn-sms-intelligence-plugin
- * Domain Path:       /languages
  */
 
 // If this file is called directly, abort.
@@ -31,11 +29,11 @@ if(!defined("PLUGIN_URL"))
     define('PLUGIN_URL',plugins_url()."/adn-sms-intelligence-plugin");
 if(!defined("PLUGIN_VERSION"))
     define('PLUGIN_VERSION','1.0.0');
+
 /**
  * Currently plugin version.
- * Start at version 1.0.0 and use SemVer - https://semver.org
- * Rename this for your plugin and update it as you release new versions.
  */
+
 define( 'PLUGIN_NAME_VERSION', '1.0.0' );
 
 /**
