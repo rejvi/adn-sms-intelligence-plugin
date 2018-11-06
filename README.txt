@@ -1,4 +1,4 @@
-=== Plugin Name ===
+=== ADNsms Intelligence Plugin ===
 
 Tags:  SMS Alert,SMS Notification,SMS Plugin,ADN SMS Plugins,ADNsms Intelligence Plugin,ADN WordPress Plugin
 Requires at least: 4.7
