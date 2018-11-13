@@ -18,7 +18,7 @@
  * @since      1.0.0
  * @package    Adn_Sms_Intelligence_Plugin
  * @subpackage Adn_Sms_Intelligence_Plugin/includes
- * @author     ADN SMS <info@adnsms.com>
+ * @author     ADN Digital Software Team <softwareteam@adndigital.com.bd>
  */
 class Adn_Sms_Intelligence_Plugin_Activator {
 

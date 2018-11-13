@@ -1,4 +1,3 @@
-
 <div class="container-fluid">
     <form method="post" action="javascript:void(0)" id="custom_sms">
         <div class="row">
@@ -12,22 +11,22 @@
                 $sms = new \AdnSms\AdnSmsNotification();
                 $sms =$sms->checkBalance();
                 $balance = json_decode($sms);
-               if(isset($balance)&&$balance->api_response_code==200) {
-                ?>
+                if(isset($balance)&&$balance->api_response_code==200) {
+                    ?>
 
                     <section class="info-boxes">
                         <?php if (isset($balance) && $balance->balance->sms!==null){ ?>
-                        <div class="col-sm-4">
-                        <div class="info-box ">
-                            <div class="box-content">
-                                Total SMS
+                            <div class="col-sm-4">
+                                <div class="info-box ">
+                                    <div class="box-content">
+                                        Total SMS
 
-                                <span class="big"<?php if($balance->balance->sms<=100){echo 'style="color:red"';}?>><?php echo $balance->balance->sms;?></span>
+                                        <span class="big"<?php if($balance->balance->sms<=100){echo 'style="color:red"';}?>><?php echo $balance->balance->sms;?></span>
 
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        </div>
-                    <?php }else{?>
+                        <?php }else{?>
 
                             <div class="col-sm-4">
                                 <div class="info-box ">
@@ -42,35 +41,35 @@
 
                         <?php }?>
                         <div class="col-sm-4">
-                        <div class="info-box">
+                            <div class="info-box">
 
 
-                            <div class="box-content">
-                                Total SMS Usage
-                                <span class="big"><?php echo $balance->usage->total_usage;?></span>
+                                <div class="box-content">
+                                    Total SMS Usage
+                                    <span class="big"><?php echo $balance->usage->total_usage;?></span>
+                                </div>
                             </div>
                         </div>
-                        </div>
-                            <div class="col-sm-4">
-                        <div class="info-box ">
-                            <div class="box-content">
-                                Current Month Usage
-                                <span class="big"><?php echo $balance->usage->current_month_usage;?></span>
+                        <div class="col-sm-4">
+                            <div class="info-box ">
+                                <div class="box-content">
+                                    Current Month Usage
+                                    <span class="big"><?php echo $balance->usage->current_month_usage;?></span>
+                                </div>
                             </div>
                         </div>
-                            </div>
                     </section>
 
-            <?php }else{ ?>
-                   <div class="col-sm-12">
-                       <h4 class="p-tb-20px"> <i><b>
-                        Something Went Wrong !
-                               </b></i></h4>
-                   </div>
+                <?php }else{ ?>
+                    <div class="col-sm-12">
+                        <h4 class="p-tb-20px"> <i><b>
+                                    Something Went Wrong !
+                                </b></i></h4>
+                    </div>
 
 
 
-            <?php }} else{ ?>
+                <?php }} else{ ?>
                 <div class="col-sm-12">
                     <h4 class="p-tb-20px"> <i><b>
                                 <?php    $url = admin_url('admin.php?page=adn-sms-intelligence');

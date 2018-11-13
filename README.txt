@@ -22,6 +22,8 @@ Features:
 * Send SMS when new order.
 * Send SMS when order status changed.
 * Merchant can defined her own massage body and set send sms settings by Yes or No button.
+* Custom SMS Send (Single And Bulk SMS)
+* SMS Balance Status
 
 == Installation ==
 

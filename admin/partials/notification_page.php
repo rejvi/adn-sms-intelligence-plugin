@@ -1,31 +1,30 @@
-
 <div class="container-fluid">
     <form method="post" action="javascript:void(0)" id="formNotify">
         <div class="row">
 
             <h4>
                 <img src="<?php echo  PLUGIN_URL."/admin/image/adnsms.png" ?>">
-               SMS Notification Settings
+                SMS Notification Settings
 
             </h4>
             <div class="col-sm-12">
                 <?php if(API_KEY!=null && API_SECRET!=null){?>
                     <h4 class="text-center " style="color: #694c90;}">Dynamic SMS Body Keywords: <span style="color: red">[USER_NAME]</span> = Customer Name , <span style="color: red">[ORDER_ID]</span> = Order ID, <span style="color: red">[AMOUNT]</span> = Total Amount, <span style="color: red">[SITE_NAME]</span> = Website Name.  </h4>
                 <?php } ?>
-            <h4 class="p-tb-20px"> <i><b>
-                 <?php if(API_KEY!=null && API_SECRET!=null){
-                     echo 'Notification Settings for User';
-                 }
-                 else{
-                       $url = admin_url('admin.php?page=adn-sms-intelligence');
-                        echo "Set API KEY & API SECRET <a href='$url'>Click Here</a> ";
-                 }?>
-              </b></i></h4>
-            <?php
-            $result = get_option('adn_notify_opt');
-            ?>
+                <h4 class="p-tb-20px"> <i><b>
+                            <?php if(API_KEY!=null && API_SECRET!=null){
+                                echo 'Notification Settings for User';
+                            }
+                            else{
+                                $url = admin_url('admin.php?page=adn-sms-intelligence');
+                                echo "Set API KEY & API SECRET <a href='$url'>Click Here</a> ";
+                            }?>
+                        </b></i></h4>
+                <?php
+                $result = get_option('adn_notify_opt');
+                ?>
             </div>
-    <?php if(API_KEY!=null && API_SECRET!=null) {?>
+            <?php if(API_KEY!=null && API_SECRET!=null) {?>
 
             <div class="col-sm-12">
 
@@ -39,7 +38,7 @@
                             </div>
                             <input type="hidden" name="send_sms_registration" id="send_sms_registration" value="<?php if(isset($result['send_sms_registration'])){echo $result['send_sms_registration'];}else{echo('Yes');}  ?>">
                         </div>
-                    </div>  
+                    </div>
                     <label class="col-sm-12 col-md-2 control-label" for="registration_msg">Registration Massage :</label>
                     <div class="col-sm-12 col-md-5">
 
@@ -80,7 +79,7 @@
             </div>
 
             <div class="col-sm-12 ">
-            <h4  class="p-tb-20px"> <i><b>Notification Settings for Woocommerce Order</b></i></h4>
+                <h4  class="p-tb-20px"> <i><b>Notification Settings for Woocommerce Order</b></i></h4>
 
             </div>
 
@@ -136,7 +135,7 @@
                     </div>
                 </div>
             </div>
-        <div class="col-sm-12">
+            <div class="col-sm-12">
                 <div class="form-group row">
                     <label class="col-sm-12 col-md-2 control-label ">Send SMS on Pending:</label>
                     <div class="col-sm-12 col-md-2">
@@ -160,7 +159,7 @@
                         </div>
                     </div>
                 </div>
-        </div>
+            </div>
 
             <div class="col-sm-12">
                 <div class="form-group row">
@@ -195,8 +194,8 @@
                         <div class="input-group">
                             <div id="radioBtn" class="btn-group">
                                 <a class="btn btn-primary btn-sm <?php if($result['send_sms_failed']=='Yes'){ echo 'active';}else{echo 'notActive';}?>"  id="failed_yes" data-toggle="send_sms_failed" data-title="Yes">YES</a>
-                                <a class="btn btn-primary btn-sm <?php if($result['send_sms_failed']=='No'){ echo 'active';}else{echo 'notActive';}?>" 
-                                id="failed_no" data-toggle="send_sms_failed" data-title="No">NO</a>
+                                <a class="btn btn-primary btn-sm <?php if($result['send_sms_failed']=='No'){ echo 'active';}else{echo 'notActive';}?>"
+                                   id="failed_no" data-toggle="send_sms_failed" data-title="No">NO</a>
                             </div>
                             <input type="hidden" name="send_sms_failed" id="send_sms_failed" value="<?php if(isset($result['send_sms_failed'])){echo $result['send_sms_failed'];}else{echo('Yes');} ?>">
                         </div>
@@ -260,9 +259,9 @@
 
                     </div>
                     <div class="hidden-xs hidden-sm col-md-1">
-                    <div class="tooltips">   <img src="<?php echo  PLUGIN_URL."/admin/image/help-icon.png" ?>" style="width: 25px;">
-                        <span class="tooltipstext">Note: Keyword Must be capitalized and should not contain any other keyword except [USER_NAME],[ORDER_ID],[AMOUNT] & [SITE_NAME].</span>
-                    </div>
+                        <div class="tooltips">   <img src="<?php echo  PLUGIN_URL."/admin/image/help-icon.png" ?>" style="width: 25px;">
+                            <span class="tooltipstext">Note: Keyword Must be capitalized and should not contain any other keyword except [USER_NAME],[ORDER_ID],[AMOUNT] & [SITE_NAME].</span>
+                        </div>
                     </div>
                 </div>
 
@@ -300,7 +299,7 @@
 
             <div class="col-sm-12 col-md-12 ">
                 <?php
-//                wp_nonce_field('notification_action_nonce','notification_name_nonce');
+                //                wp_nonce_field('notification_action_nonce','notification_name_nonce');
                 submit_button();
                 ?>
             </div>
@@ -329,5 +328,5 @@
                 })
             }
         });
-    });      
+    });
 </script>
