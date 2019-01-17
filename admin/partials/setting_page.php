@@ -1,3 +1,6 @@
+<link href="<?php echo PLUGIN_URL. '/admin/css/bootstrap.min.css'?>" type="text/css" rel='stylesheet' ></link>
+<link href="<?php echo PLUGIN_URL. '/admin/css/adn-sms-intelligence-plugin-admin.css'?>" type="text/css" rel='stylesheet' ></link>
+
 <div class="container-fluid">
     <form method="post" action="javascript:void(0)" id="formId">
         <div class="row">
@@ -55,16 +58,16 @@
 
 <?php  include(__DIR__ . '/_footer.php'); ?>
 <script>
-    jQuery(function () {
-        jQuery('#formId').validate({
+    $adn(function () {
+        $adn('#formId').validate({
             submitHandler:function () {
                 var adnnonce = "<?php echo wp_create_nonce('adn_settings_nonce') ;?>";
-                var postdata= jQuery("#formId").serialize() +"&action=adn_settings&_ajax_nonce="+adnnonce;
+                var postdata= $adn("#formId").serialize() +"&action=adn_settings&_ajax_nonce="+adnnonce;
 
-                jQuery.post("<?php echo admin_url('admin-ajax.php') ?>",postdata,function (response) {
+                $adn.post("<?php echo admin_url('admin-ajax.php') ?>",postdata,function (response) {
 
                     // console.log(response);
-                    var status= jQuery.parseJSON(response);
+                    var status= $adn.parseJSON(response);
                     if(status.status==1){
                         alert(status.massage);
                     }

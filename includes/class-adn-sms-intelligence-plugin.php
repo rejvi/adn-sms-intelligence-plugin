@@ -154,8 +154,8 @@ class Adn_Sms_Intelligence_Plugin {
 
 		$plugin_admin = new Adn_Sms_Intelligence_Plugin_Admin( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+//		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
+//		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
         //add menu
         $this->loader->add_action( 'admin_menu', $plugin_admin, 'ADNsms_add_menu' );
 
@@ -222,8 +222,8 @@ class Adn_Sms_Intelligence_Plugin {
 
 		$plugin_public = new Adn_Sms_Intelligence_Plugin_Public( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+//		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
+//		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
         $notify_settings = get_option('adn_notify_opt');
         include(PLUGIN_DIR_PATH . 'library/adn_sms_class/config/config.php');
         if(API_KEY!=null && API_SECRET!=null) {

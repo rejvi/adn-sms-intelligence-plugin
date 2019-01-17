@@ -102,13 +102,14 @@ class Adn_Sms_Intelligence_Plugin_Admin {
          * between the defined hooks and the functions defined in this
          * class.
          */
-
+//        wp_enqueue_script('my-custom-script', get_template_directory_uri() .'/js/my-custom-script.js', array('jquery'), null, true);
 //		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/adn-sms-intelligence-plugin-admin.js', array( 'jquery' ), $this->version, false );
-        wp_enqueue_script( 'bootstrap.min.js', plugin_dir_url( __FILE__ ) . 'js/bootstrap.min.js', array( 'jquery' ), $this->version, true );
-        wp_enqueue_script( 'jquery.min.js', plugin_dir_url( __FILE__ ) . 'js/jquery.min.js', array( 'jquery' ), $this->version, true );
-        wp_enqueue_script( 'jquery.notifyBar.js', plugin_dir_url( __FILE__ ) . 'js/jquery.notifyBar.js', array( 'jquery' ), $this->version, true );
-        wp_enqueue_script( 'jquery.validate.min.js', plugin_dir_url( __FILE__ ) . 'js/jquery.validate.min.js', array( 'jquery' ), $this->version, true );
-        wp_enqueue_script( 'adn-sms-intelligence-plugin-admin.js', plugin_dir_url( __FILE__ ) . 'js/adn-sms-intelligence-plugin-admin.js', array( 'jquery' ), PLUGIN_VERSION, true );
+//        wp_enqueue_script( 'bootstrap.min.js', plugin_dir_url( __FILE__ ) . 'js/bootstrap.min.js', array( 'jquery' ), $this->version, true );
+////        wp_enqueue_script( 'jquery.min.js', plugin_dir_url( __FILE__ ) . 'js/jquery.min.js', array( 'jquery' ), $this->version, true ,$in_footer = false );
+//        wp_enqueue_script( 'jquery.notifyBar.js', plugin_dir_url( __FILE__ ) . 'js/jquery.notifyBar.js', array( 'jquery' ), $this->version, true );
+//        wp_enqueue_script( 'jquery.validate.min.js', plugin_dir_url( __FILE__ ) . 'js/jquery.validate.min.js', array( 'jquery' ), $this->version, true );
+//        wp_enqueue_script( 'adn-sms-intelligence-plugin-admin.js', plugin_dir_url( __FILE__ ) . 'js/adn-sms-intelligence-plugin-admin.js', array( 'jquery' ), PLUGIN_VERSION, true );
+
 
     }
     public function ADNsms_add_menu() {

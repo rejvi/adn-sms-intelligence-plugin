@@ -1,3 +1,6 @@
+<link href="<?php echo PLUGIN_URL. '/admin/css/bootstrap.min.css'?>" type="text/css" rel='stylesheet' ></link>
+<link href="<?php echo PLUGIN_URL. '/admin/css/adn-sms-intelligence-plugin-admin.css'?>" type="text/css" rel='stylesheet' ></link>
+
 <div class="container-fluid">
     <form method="post" action="javascript:void(0)" id="custom_sms">
         <div class="row">

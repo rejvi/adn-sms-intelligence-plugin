@@ -13,9 +13,9 @@ footer {
     color: white;
     padding: 15px;
 }
-#radioBtn {
-    color: white;
-}
+/*#radioBtn {*/
+    /*color: white;*/
+/*}*/
 #radioBtn .notActive{
     color: #3276b1;
     background-color: #fff;
@@ -99,7 +99,7 @@ footer {
 .field-icon {
     float: right;
     margin-left: -25px;
-    margin-top: -37px;
+    margin-top: -33px;
     position: relative;
     z-index: 2;
     padding-right: 10px;
