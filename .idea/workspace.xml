@@ -5,22 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dbe0cfbe-40dc-4ac3-a76e-f0aa58915893" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/class-adn-sms-intelligence-plugin-admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/class-adn-sms-intelligence-plugin-admin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/css/adn-sms-intelligence-plugin-admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/admin/css/adn-sms-intelligence-plugin-admin.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/admin/css/bootstrap.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/js/adn-sms-intelligence-plugin-admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/js/adn-sms-intelligence-plugin-admin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/js/bootstrap.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/js/jquery.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/js/jquery.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/js/jquery.notifyBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/js/jquery.notifyBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/js/jquery.validate.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/js/jquery.validate.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/partials/_footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/partials/_footer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/partials/custom_sms_send.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/partials/custom_sms_send.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/partials/notification_page.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/partials/notification_page.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/partials/setting_page.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/partials/setting_page.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/partials/sms_balance_info.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/partials/sms_balance_info.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/class-adn-sms-intelligence-plugin.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/class-adn-sms-intelligence-plugin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library/adn_sms_class/config/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/library/adn_sms_class/config/config.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,93 +29,12 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/includes/class-adn-sms-intelligence-plugin.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1902">
-              <caret line="152" selection-start-line="152" selection-end-line="152" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/class-adn-sms-intelligence-plugin-public.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="79" column="24" selection-start-line="79" selection-start-column="8" selection-end-line="79" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/library/adn_sms_class/config/config.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="3" column="53" lean-forward="true" selection-start-line="3" selection-start-column="53" selection-end-line="3" selection-end-column="53" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/partials/custom_sms_send.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/partials/sms_balance_info.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="40">
-              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/js/bootstrap.min.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="40">
-              <caret line="6" column="180" lean-forward="true" selection-start-line="6" selection-start-column="180" selection-end-line="6" selection-end-column="180" />
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/admin/css/bootstrap.min.css">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="5" column="45" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/css/adn-sms-intelligence-plugin-admin.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
-              <caret line="100" column="23" lean-forward="true" selection-start-line="100" selection-start-column="23" selection-end-line="100" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/partials/setting_page.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="40">
-              <caret line="2" selection-start-line="2" selection-end-line="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/partials/notification_page.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="40">
-              <caret line="2" selection-start-line="2" selection-end-line="2" />
+            <state relative-caret-position="20">
+              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
             </state>
           </provider>
         </entry>
@@ -191,6 +96,7 @@
         <option value="$PROJECT_DIR$/admin/partials/sms_balance_info.php" />
         <option value="$PROJECT_DIR$/admin/css/adn-sms-intelligence-plugin-admin.css" />
         <option value="$PROJECT_DIR$/library/adn_sms_class/config/config.php" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -207,6 +113,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -217,68 +124,25 @@
             <path>
               <item name="adn-sms-intelligence-plugin" type="b2602c69:ProjectViewProjectNode" />
               <item name="adn-sms-intelligence-plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adn-sms-intelligence-plugin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adn-sms-intelligence-plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adn-sms-intelligence-plugin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adn-sms-intelligence-plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adn-sms-intelligence-plugin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adn-sms-intelligence-plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="partials" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adn-sms-intelligence-plugin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adn-sms-intelligence-plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="includes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adn-sms-intelligence-plugin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adn-sms-intelligence-plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="library" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adn-sms-intelligence-plugin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adn-sms-intelligence-plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="library" type="462c0819:PsiDirectoryNode" />
-              <item name="adn_sms_class" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adn-sms-intelligence-plugin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adn-sms-intelligence-plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="library" type="462c0819:PsiDirectoryNode" />
-              <item name="adn_sms_class" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="adn-sms-intelligence-plugin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="adn-sms-intelligence-plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="library" type="462c0819:PsiDirectoryNode" />
-              <item name="adn_sms_class" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../open-cart" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -319,18 +183,20 @@
       <workItem from="1542167592817" duration="2540000" />
       <workItem from="1547536753986" duration="7825000" />
       <workItem from="1547612238148" duration="662000" />
-      <workItem from="1547704755891" duration="11744000" />
+      <workItem from="1547704755891" duration="13331000" />
+      <workItem from="1553762984199" duration="132000" />
+      <workItem from="1556534439157" duration="755000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61578000" />
+    <option name="totallyTimeSpent" value="64052000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1920" height="990" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25989306" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.259375" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -343,7 +209,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.3278302" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32760596" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.32900944" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -366,34 +232,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/Downloads/orion-sms-otp-verification/orion-sms-otp-verification.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Downloads/blox-page-builder/blox_builder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="35" lean-forward="true" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Downloads/29-10-18 bk/woocommerce.3.4.3/woocommerce/woocommerce.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="1" column="3" lean-forward="true" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Downloads/miniorange-otp-verification.3.2.48/miniorange-otp-verification/readme.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" selection-start-line="6" selection-end-line="6" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../../../wp/adn-sms-intelligence-plugin/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -500,16 +338,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/adn-sms-intelligence-plugin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="538">
-          <caret line="75" lean-forward="true" selection-start-line="75" selection-end-line="75" />
-          <folding>
-            <element signature="e#7#702#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/css/adn-sms-intelligence-plugin-public.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -549,10 +377,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/js/bootstrap.min.js">
+    <entry file="file://$PROJECT_DIR$/includes/class-adn-sms-intelligence-plugin.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="6" column="180" lean-forward="true" selection-start-line="6" selection-start-column="180" selection-end-line="6" selection-end-column="180" />
+        <state relative-caret-position="2820">
+          <caret line="152" selection-start-line="152" selection-end-line="152" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/class-adn-sms-intelligence-plugin-public.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1420">
+          <caret line="79" column="24" selection-start-line="79" selection-start-column="8" selection-end-line="79" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -563,10 +398,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/partials/notification_page.php">
+    <entry file="file://$PROJECT_DIR$/admin/partials/sms_balance_info.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
           <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/js/bootstrap.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="6" column="180" lean-forward="true" selection-start-line="6" selection-start-column="180" selection-end-line="6" selection-end-column="180" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/css/adn-sms-intelligence-plugin-admin.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2000">
+          <caret line="100" column="23" lean-forward="true" selection-start-line="100" selection-start-column="23" selection-end-line="100" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -577,45 +426,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/partials/sms_balance_info.php">
+    <entry file="file://$PROJECT_DIR$/admin/partials/notification_page.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/css/adn-sms-intelligence-plugin-admin.css">
+    <entry file="file://$PROJECT_DIR$/admin/css/bootstrap.min.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="100" column="23" lean-forward="true" selection-start-line="100" selection-start-column="23" selection-end-line="100" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/class-adn-sms-intelligence-plugin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1902">
-          <caret line="152" selection-start-line="152" selection-end-line="152" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/class-adn-sms-intelligence-plugin-public.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="79" column="24" selection-start-line="79" selection-start-column="8" selection-end-line="79" selection-end-column="24" />
+        <state relative-caret-position="701">
+          <caret line="5" column="45" lean-forward="true" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/library/adn_sms_class/config/config.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
-          <caret line="3" column="53" lean-forward="true" selection-start-line="3" selection-start-column="53" selection-end-line="3" selection-end-column="53" />
+          <caret line="3" column="53" selection-start-line="3" selection-start-column="53" selection-end-line="3" selection-end-column="53" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/css/bootstrap.min.css">
+    <entry file="file://$PROJECT_DIR$/library/adn_sms_class/lib/AbstractAdnSms.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="45" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
+        <state relative-caret-position="2300">
+          <caret line="115" column="20" selection-end-line="172" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/library/adn_sms_class/lib/AdnSmsInterface.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/library/adn_sms_class/lib/AdnSmsNotification.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="417">
+          <caret line="112" column="5" selection-end-line="147" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adn-sms-intelligence-plugin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="10" column="22" lean-forward="true" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="185" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
