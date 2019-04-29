@@ -1,4 +1,4 @@
-=== ADNsms Intelligence Plugin ===
+ADNsms Intelligence Plugin for Wordpress
 
 Tags:  SMS Alert,SMS Notification,SMS Plugin,ADN SMS Plugins,ADNsms Intelligence Plugin,ADN WordPress Plugin
 Requires at least: 4.7
@@ -7,11 +7,10 @@ Stable tag: 1.0.0
 WooCommerce Version: 3.0+
 Requires PHP: 5.6+
 License: GPLv3
-License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 A plugin for sending SMS notification after login registration placing orders using WooCommerce
 
-== Description ==
+= Description =
 
 This is an Intelligence Plugin. By Using this plugin customer can get notification after login registration placing order via sms using ADNsms Intelligence Plugin.
 
@@ -25,9 +24,9 @@ Features:
 * Custom SMS Send (Single And Bulk SMS)
 * SMS Balance Status
 
-== Installation ==
+= Installation =
 
-== Minimum Requirements ==
+= Minimum Requirements =
 * Required WooCommerce to install ADNsms Intelligence Plugin.
 * WooCommerce Version: 3.0.0  or greater ( 3.5.0 or greater is recommended)
 * PHP version 5.6 or greater (PHP 7.2 or greater is recommended)
@@ -44,15 +43,15 @@ Features:
 3. Activate the plugin through the 'Plugins' menu in WordPress.
 
 
-== Screenshots ==
+= Screenshots =
 
-== Changelog ==
+= Changelog =
 
 = 1.0.0 =
 
 * Initial release
 
-== Upgrade Notice ==
+= Upgrade Notice =
 
 Noting here.
 
