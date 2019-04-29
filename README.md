@@ -1,11 +1,11 @@
-ADNsms Intelligence Plugin for Wordpress
+#ADNsms Intelligence Plugin for Wordpress Version : 1.0.0
 
-Tags:  SMS Alert,SMS Notification,SMS Plugin,ADN SMS Plugins,ADNsms Intelligence Plugin,ADN WordPress Plugin
-Requires at least: 4.7
-Tested up to: 4.9
-Stable tag: 1.0.0
-WooCommerce Version: 3.0+
-Requires PHP: 5.6+
+Tags:  SMS Alert,SMS Notification,SMS Plugin,ADN SMS Plugins,ADNsms Intelligence Plugin,ADN WordPress Plugin  
+Requires at least: 4.7  
+Tested up to: 4.9  
+Stable tag: 1.0.0  
+WooCommerce Version: 3.0+  
+Requires PHP: 5.6+  
 License: GPLv3
 
 A plugin for sending SMS notification after login registration placing orders using WooCommerce
@@ -33,17 +33,11 @@ Features:
 * MySQL version 5.0 or greater (MySQL 5.6 or greater is recommended)
 
 = From your WordPress dashboard =
-1. Visit `Plugins > Add New`
-2. Search for `ADNsms Intelligence Plugin`. Find and Install `ADNsms Intelligence Plugin`
-3. Activate the plugin from your Plugins page
 
-= FROM WORDPRESS.ORG =
-1. Download ADNsms Intelligence Plugin.
-2. Unzip and upload the adn-sms-intelligence-plugin directory to your /wp-content/plugins/ directory.
-3. Activate the plugin through the 'Plugins' menu in WordPress.
+    1. Visit `Plugins > Add New`
+    2. Search for `ADNsms Intelligence Plugin`. Find and Install `ADNsms Intelligence Plugin`
+    3. Activate the plugin from your Plugins page
 
-
-= Screenshots =
 
 = Changelog =
 
