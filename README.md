@@ -1,18 +1,6 @@
 # ADNsms Intelligence Plugin for Wordpress Version : 1.0.0
 
-Tags:  SMS Alert,SMS Notification,SMS Plugin,ADN SMS Plugins,ADNsms Intelligence Plugin,ADN WordPress Plugin  
-Requires at least: 4.7  
-Tested up to: 4.9  
-Stable tag: 1.0.0  
-WooCommerce Version: 3.0+  
-Requires PHP: 5.6+  
-License: GPLv3
-
-A plugin for sending SMS notification after login registration placing orders using WooCommerce
-
-# Description
-
-This is an Intelligence Plugin. By Using this plugin customer can get notification after login registration placing order via sms using ADNsms Intelligence Plugin.
+This is an Intelligence Plugin. By Using this plugin customer can get notification after registration,password reset,placing order via sms using ADNsms Intelligence Plugin.
 
 # Features
 
